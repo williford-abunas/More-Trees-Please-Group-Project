@@ -1,16 +1,16 @@
-#MoreTreesPlease...
+# MoreTreesPlease...
 Week 7 large Group Projects 
 
-##OVERVIEW
+## OVERVIEW
 Using a combination of APIs and databases, plant trees, watch them grow and attract birds to your forest  
 
-##MVP 
+## MVP 
 When the user opens the homepage there will be a NZ map, split into 3 sections: Upper North, Lower North/Upper South and Lower South. 
 The user can select a section and be taken to a new page where a forest section and a text posts section is displayed.  An API will get a random plant species (depending on hardiness zone?), the plant data will be shown to the user in some manner, the user can choose where on the forest section to plant the plant. 
 Over time that plant will appear to grow. Once it reaches a certain age the plant will be ‘mature’ and cease to grow. 
 Each time  the plant summary is a multiple of 10 a random bird is pulled from a database and a text update says “bird …. Spotted” and a summary of how many species of birds have been spotted 
 
-##USER STORES
+## USER STORES
 As a user i want to see a map of NZ on my homepage 
 As a user i want to be able to select 1 of 3 zones
 As a user i want to be taken to a selected zone on a new page
