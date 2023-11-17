@@ -1,55 +1,53 @@
 # MoreTreesPlease...
-Week 7 large Group Projects 
 
 ## OVERVIEW
-Using a combination of APIs and databases, plant trees, watch them grow and attract birds to your forest  
+Plant trees, watch them grow and attract birds to your forest. Make sure you control the invasive plants and animals!
 
 ## MVP 
-When the user opens the homepage there will be a NZ map, split into 3 sections: Upper North, Lower North/Upper South and Lower South. 
-The user can select a section and be taken to a new page where a forest section and a text posts section is displayed.  An API will get a random plant species (depending on hardiness zone?), the plant data will be shown to the user in some manner, the user can choose where on the forest section to plant the plant. 
+When the user opens the homepage there will be a map of NZ that is split into 3 zone: Upper North, Lower North/Upper South and Lower South. 
+The user will be able to create an account with auth0 so they can add trees.
+The user can select a section and be taken to a new page where a forest section and an 'updates' section is displayed.  The user will be given a seed for a random tree from the trees database. The plant data will be shown to the user in some manner, the user can choose a fixed location where on the forest section to plant the tree.
 Over time that plant will appear to grow. Once it reaches a certain age the plant will be ‘mature’ and cease to grow. 
-Each time  the plant summary is a multiple of 10 a random bird is pulled from a database and a text update says “bird …. Spotted” and a summary of how many species of birds have been spotted 
+Once the user has 10 mature trees, a random bird is pulled from the birds database and a text update says “bird Spotted” and a summary of how many species of birds have been spotted is updated in the updates section.
 
-## USER STORES
-As a user i want to see a map of NZ on my homepage 
-As a user i want to be able to select 1 of 3 zones
-As a user i want to be taken to a selected zone on a new page
-As a user i want to see a dedicated forest canvas
-As a user i want to receive a random plant ‘seed’
-As a user i want to be able to click on that canvas and plant my seed on that spot 
-As a user I want to be able to see the tree get bigger over time, and stop when it’s mature.
-As a user i want the program to keep track of my trees 
-As a user i want to see a update when my tree is mature
-As a user i want to see how many mature trees i have in my forest 
-As a user i want to see birds appear in my forest depending on how many mature trees i have 
-As a user i want to see an update every time a bird is spotted in my forest 
-As a user i want to to be able to see the history of all my updates 
+#### User Stores
+------------------------------------------------------------------------------------------
 
-##STRETCH ITEMS
-Animating the tree growth
-As a user i want to see my tree slowly growing in realtime 
+### MVP
 
-Birds images  appearing on the map
-As a user i want to see a bird image appear on the map 
+## As a non-registered User
+ - I want to be able to view the whole map of NZ
+ - I want to be able to access all three sections of the map
+ - I want to be able to see information about each tree that's been planted when I click on it. Perhaps with a popup, or in the updates section beneath the map. (Species, date planted,
 
-Bird Calls 
-As a user i want to hear a different bird call each time a new bird species is spotted 
+## As a registered User (If incorporating Authorization)
+- I want to receive a random tree seed from the database when I log in and an additional random seed every 30 seconds thereafter.
+- I want to be able to click on the forest canvas and 'plant' my seed in that spot.
+- I want a random bird species from the database to appear at a random location on the map once ten trees are planted.
+- I want an invasive pine tree to appear at a random location on the map every minute and the ability to click it and remove it. 
 
-Different bird Images on map
-As as a user i want to see different images for different bird species
+### STRETCH
 
-Animate birds moving around map 
-As a user i want to see my birds move from place to place on the map 
+- Incorporate Authorization so only registered users can do tasks specified above (optional)
+- I want to be able to see the tree grow slowly in size over time, and stop when it's reached 'maturity'. Perhaps 3 minutes?
+- I want to be able to attach the user's name to a tree that has been planted by them and add each planted tree to it's own database with it's details including 'planted_by'
+- I want to be able to hear birdsong from the birds in my forest:
+      https://www.doc.govt.nz/nature/native-animals/birds/bird-songs-and-calls/
+- I want the birds to be able to fly around the map randomly.
+- I want an update once a tree reaches maturity.
+- I want an update once a bird is spotted in my forest.
+- I want it to be impossible to remove an invasive pine tree if it isn't removed within the first 30 seconds.
+- I want my cursor to change into a little spade or chainsaw when I remove an invasive pine tree.
 
-Invasive species of tree appear at random 
-As a user i want pine trees to start growing in random spots 
+### DB (Server Side)
+------------------------------------------------------------------------------------------
+## Birds
 
-Remove invasive species with a tool  
-As a user i want to be able to remove invasive species
-As a user i want to see my cursor as a little spade or something similar 
+## Trees
 
-User Account
-As a user i want to be able to log into an account where i see my trees 
-As a moderator i want users to be registered before they can plant 
-
-Invasive animals 
+## Planted Trees
+Column Name   Data Type   Purpose
+-----------------------------------
+id
+tree_species
+....
