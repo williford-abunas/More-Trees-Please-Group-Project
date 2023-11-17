@@ -9,7 +9,7 @@ export async function seed(knex) {
       name: 'Hihi',
       likesFlowering: true,
       likesFruiting: false,
-      favouriteTree_Id: 2,
+      favouriteTreeId: 2,
     },
     {
       id: 2,

@@ -5,7 +5,7 @@ export async function up(knex) {
     table.bool('likesFlowering')
     table.bool('likesFruiting')
     table.bool('isNocturnal')
-    table.integer('favouriteTreeId').references('id').InTable('plants')
+    table.integer('favouriteTreeId')
   })
 }
 
