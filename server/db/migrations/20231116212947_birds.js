@@ -3,8 +3,9 @@ export async function up(knex) {
     table.increments('id').primary()
     table.string('name')
     table.bool('likesFlowering')
-    table.bool('likeFruiting')
+    table.bool('likesFruiting')
     table.bool('isNocturnal')
+    table.integer('favouriteTreeId').references('id').InTable('plants')
   })
 }
 
