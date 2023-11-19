@@ -6,7 +6,7 @@ export async function up(knex) {
     table.bool('isFlowering')
     table.bool('isFruiting')
     table.integer('maxHeight')
-    table.bool('native')
+    table.bool('isNative')
     table.string('imageUrl')
   })
 }
