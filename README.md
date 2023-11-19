@@ -7,12 +7,13 @@ Plant trees, watch them grow and attract birds to your forest. Make sure you con
 
 A Boilerplate is already set up for you with everything you will need to get started. This boilerplate is set up to use:
 
-React
-ReactQuery
-Express
-Knex.js
-Sass
-Auth? (stretch)
+* [React](https://reactjs.org/docs/getting-started.html)
+* [ReactQuery](https://tanstack.com/query/v4/docs/react/overview) 
+* [Express](https://expressjs.com/en/api.html)
+* [Knex.js](https://knexjs.org/)
+* [Sass](https://sass-lang.com/)
+
+
 
 ## MVP 
 When the user opens the homepage there will be a map of NZ that is split into 3 zone: Upper North, Lower North/Upper South and Lower South. 
@@ -56,24 +57,24 @@ Once the user has 10 mature trees, a random bird is pulled from the birds databa
 ------------------------------------------------------------------------------------------
 ## Birds
 The Birds table holds the following info:
-id: number 
-name: stirng 
-likesFlowering: bool
-likesFruiting: bool
-isNocturnal: bool
-favouriteTreeId: number (can be used to join on plants table if desired)
+- id: number 
+- name: stirng 
+- likesFlowering: bool
+- likesFruiting: bool
+- isNocturnal: bool
+- favouriteTreeId: number _(can be used to join on plants table if desired)_
 
 ## Plants
 The plants table holds the following info:
 
-  id: number
-  name: string
-  region: number
-  isFlowering: boolean
-  isFruiting: boolean
-  maxHeight: number
-  native: boolean
-  imgUrl: string
+  - id: number
+  - name: string
+  - region: number
+  - isFlowering: boolean
+  - isFruiting: boolean
+  - maxHeight: number
+  - native: boolean
+  - imgUrl: string
 
 any plant with a false value for the native column will be treated as an invasive species.
 
@@ -83,7 +84,7 @@ if using sccount log in, we will wnt to keep track of th trees the user is plant
 
 Column Name   Data Type   Purpose
 -----------------------------------
-id
-plantName
-datePlanted
-....?
+- id <pre>    number     identify each plant</pre> 
+ - plantName
+- datePlanted
+- ....?
