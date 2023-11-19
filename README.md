@@ -80,11 +80,11 @@ any plant with a false value for the native column will be treated as an invasiv
 
 
 ## Planted Trees
-if using sccount log in, we will wnt to keep track of th trees the user is planting
+If using account log in, we will want to keep track of the plants the user is planting
 
 Column Name   Data Type   Purpose
 -----------------------------------
-- id <pre>    number     identify each plant</pre> 
- - plantName
-- datePlanted
+- id  -number - identify each plant
+ - plantName - string - -name each plant and associate img
+- datePlanted - dateTime - calculate trees age
 - ....?
