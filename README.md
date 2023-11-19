@@ -12,6 +12,7 @@ A Boilerplate is already set up for you with everything you will need to get sta
 * [Express](https://expressjs.com/en/api.html)
 * [Knex.js](https://knexjs.org/)
 * [Sass](https://sass-lang.com/)
+* Auth
 
 
 
@@ -36,22 +37,37 @@ Once the user has 10 mature trees, a random bird is pulled from the birds databa
 - I want to receive a random tree seed from the database when I log in and an additional random seed every 30 seconds thereafter.
 - I want to be able to click on the forest canvas and 'plant' my seed in that spot.
 - I want my plants to "grow" over time.
--I want to see a visual representation of my plants.
+- I want an update once a tree reaches maturity.
+- I want to see a visual representation of my plants.
 - I want a random bird species from the database to appear at a random location on the map once ten plants reach maturity.
-- I want an invasive plant to appear at a random location on the map every minute and the ability to click it and remove it. 
+
 
 ### STRETCH
 
 - Incorporate Authorization so only registered users can do tasks specified above (optional)
+- I want an invasive plant to appear at a random location on the map every minute and the ability to click it and remove it. 
+- I want an update once a bird is spotted in my forest.
 - I want to be able to see the tree grow slowly in size over time, and stop when it's reached 'maturity'. Perhaps 3 minutes?
 - I want to be able to attach the user's name to a tree that has been planted by them and add each planted tree to it's own database with it's details including 'planted_by'
 - I want to be able to hear birdsong from the birds in my forest:
       https://www.doc.govt.nz/nature/native-animals/birds/bird-songs-and-calls/
 - I want the birds to be able to fly around the map randomly.
-- I want an update once a tree reaches maturity.
-- I want an update once a bird is spotted in my forest.
+
 - I want it to be impossible to remove an invasive pine tree if it isn't removed within the first 30 seconds.
 - I want my cursor to change into a little spade or chainsaw when I remove an invasive pine tree.
+
+### Views 
+------------------------------------------------------------------------------------------
+
+| name | purpose |
+| --- | --- |
+| Login | if using Auth |
+| Register | if using auth|
+| Home | See the map of NZ and choose a region |
+| Region 1 | upper north of nz |
+| Region 2| central nz|
+| Region 3| lower south of nz |
+| my history of updates (stretch)|
 
 ### DB (Server Side)
 ------------------------------------------------------------------------------------------
@@ -85,6 +101,6 @@ If using account log in, we will want to keep track of the plants the user is pl
 Column Name   Data Type   Purpose
 -----------------------------------
 - id  -number - identify each plant
- - plantName - string - -name each plant and associate img
+- plantName - string - -name each plant and associate img
 - datePlanted - dateTime - calculate trees age
 - ....?
