@@ -1,9 +1,9 @@
 import request from 'superagent'
-import { Fruit, FruitData } from '../models/birdsmodel.ts'
+
+import { Bird } from '../models/birdsModel.ts'
+import { Plant } from '../models/plantsModel.ts'
 
 const rootUrl = '/api/v1'
-
-
 
 // function logError(err: Error) {
 //   console.log(err)
