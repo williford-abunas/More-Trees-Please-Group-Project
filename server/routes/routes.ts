@@ -5,8 +5,19 @@ import * as db from '../db/db.ts'
 
 const router = express.Router()
 
-// A public endpoint that anyone can access
-// GET /api/v1/fruits
 router.get('/', (req, res) => {})
 
+//Location GETS
+
+router.get('/:location', async (req, res) => {
+  const location = req.params.location
+  try {
+    // const allBirds = await db.getAllBirds()
+    // const regionTrees = await db.getRegionTrees
+    // Placeholder DB Functions, waiting DB Functions
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({ message: `This isn't working!` })
+  }
+})
 export default router
