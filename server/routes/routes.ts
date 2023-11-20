@@ -12,9 +12,9 @@ router.get('/', (req, res) => {})
 router.get('/:location', async (req, res) => {
   const location = req.params.location
   try {
-    // const allBirds = await db.getAllBirds()
-    // const regionTrees = await db.getRegionTrees
-    // Placeholder DB Functions, waiting DB Functions
+    const allBirds = await db.getBirds()
+    const regionTrees = await db.getPlants(location)
+    res.json(allBirds, regionTrees)
   } catch (error) {
     console.log(error)
     res.status(500).json({ message: `This isn't working!` })
