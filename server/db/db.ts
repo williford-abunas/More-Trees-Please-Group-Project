@@ -9,3 +9,7 @@ export async function getPlants(): Promise<Plant[]> {
 export async function getBirds(): Promise<Bird[]> {
   return await connection('birds').select('*')
 }
+
+export async function getPlantsByRegion(): Promise<Plant[]> {
+  return await connection('plants').select('region')
+}
