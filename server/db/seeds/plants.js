@@ -11,7 +11,7 @@ export async function seed(knex) {
       isFlowering: false,
       isFruiting: false,
       maxHeight: 50,
-      native: true,
+      isNative: true,
       imageUrl:
         'https://lp-cms-production.imgix.net/image_browser/Kauri%20tree%20%28Getty%20RF%29.jpg?auto=format&w=1440&h=810&fit=crop&q=75',
     },
@@ -22,7 +22,7 @@ export async function seed(knex) {
       isFlowering: true,
       isFruiting: false,
       maxHeight: 20,
-      native: true,
+      isNative: true,
       imageUrl:
         'https://upload.wikimedia.org/wikipedia/commons/5/5b/PohutukawaCornwallis.jpg',
     },
@@ -33,7 +33,7 @@ export async function seed(knex) {
       isFlowering: true,
       isFruiting: false,
       maxHeight: 3,
-      native: true,
+      isNative: true,
       imageUrl:
         'https://wavewatchers.co.nz/wp-content/uploads/2017/03/Flax.jpg',
     },
@@ -44,7 +44,7 @@ export async function seed(knex) {
       isFlowering: false,
       isFruiting: false,
       maxHeight: 18,
-      native: true,
+      isNative: true,
       imageUrl: 'https://www.treetrust.org.nz/images/76._Titoki.jpg',
     },
     {
@@ -54,7 +54,7 @@ export async function seed(knex) {
       isFlowering: false,
       isFruiting: false,
       maxHeight: 35,
-      native: true,
+      isNative: true,
       imageUrl:
         'https://i.pinimg.com/originals/59/fb/3f/59fb3ff073a9e4b59cef86de55c91bc5.jpg',
     },
@@ -65,7 +65,7 @@ export async function seed(knex) {
       isFlowering: false,
       isFruiting: false,
       maxHeight: 15,
-      native: true,
+      isNative: true,
       imageUrl:
         'https://files.leafland.co.nz/tr:w-1000/didymocheton-spectabilis/didymocheton-spectabilis.jpg',
     },
@@ -76,7 +76,7 @@ export async function seed(knex) {
       isFlowering: false,
       isFruiting: false,
       maxHeight: 1,
-      native: true,
+      isNative: true,
       imageUrl:
         'https://www.aucklandbotanicgardens.co.nz/media/3343/phormium-cookianum-30-oct-2013-025.jpg',
     },
@@ -87,7 +87,7 @@ export async function seed(knex) {
       isFlowering: true,
       isFruiting: false,
       maxHeight: 2,
-      native: true,
+      isNative: true,
       imageUrl:
         'https://pioneernursery.co.nz/wp-content/uploads/2019/09/austroderia-Toetoe.jpg',
     },
@@ -98,7 +98,7 @@ export async function seed(knex) {
       isFlowering: false,
       isFruiting: false,
       maxHeight: 0.5,
-      native: true,
+      isNative: true,
       imageUrl:
         'https://cdn.shopify.com/s/files/1/0275/4545/files/Poa_cita_23_1024x1024.jpg?3597089931393021830',
     },
@@ -109,7 +109,7 @@ export async function seed(knex) {
       isFlowering: false,
       isFruiting: false,
       maxHeight: 1,
-      native: true,
+      isNative: true,
       imageUrl:
         'https://www.gardenia.net/wp-content/uploads/2016/01/CFGr209Optimized.jpg',
     },
@@ -120,7 +120,7 @@ export async function seed(knex) {
       isFlowering: false,
       isFruiting: false,
       maxHeight: 1,
-      native: true,
+      isNative: true,
       imageUrl:
         'https://www.nzpcn.org.nz/site/assets/files/0/35/633/qqq_w-olguryy-107-puvba-ehoen-phc.400x400-u0c0i1s1q90f1.jpg',
     },
@@ -131,7 +131,7 @@ export async function seed(knex) {
       isFlowering: true,
       isFruiting: true,
       maxHeight: 5,
-      native: true,
+      isNative: true,
       imageUrl:
         'https://webbox.imgix.net/images/njwsnuimalbimped/a41db749-ca8f-4fff-9aae-dc29f3f50e78.jpg?auto=format,compress&fit=crop&crop=entropy',
     },
@@ -142,7 +142,7 @@ export async function seed(knex) {
       isFlowering: false,
       isFruiting: false,
       maxHeight: 6,
-      native: true,
+      isNative: true,
       imageUrl:
         'https://lifeform.co.nz/wp-content/uploads/Wheki_Ponga_Koru.jpg',
     },
@@ -153,7 +153,7 @@ export async function seed(knex) {
       isFlowering: false,
       isFruiting: false,
       maxHeight: 40,
-      native: true,
+      isNative: true,
       imageUrl:
         'https://www.doc.govt.nz/thumbs/hero/contentassets/8c90d0aa2f6b47658c9c4812ebcd408d/southern-rata-enderby-island-hero.jpg',
     },
@@ -164,7 +164,7 @@ export async function seed(knex) {
       isFlowering: false,
       isFruiting: false,
       maxHeight: 50,
-      native: true,
+      isNative: true,
       imageUrl:
         'https://nznurseries.co.nz/wp-content/uploads/2022/01/Kahikatea-post-.jpeg',
     },
@@ -175,7 +175,7 @@ export async function seed(knex) {
       isFlowering: false,
       isFruiting: false,
       maxHeight: 25,
-      native: true,
+      isNative: true,
       imageUrl:
         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS8giIdzSjEFML9dpI6BSTmZRntPHBeQ0WMA&usqp=CAU',
     },
@@ -186,7 +186,7 @@ export async function seed(knex) {
       isFlowering: false,
       isFruiting: false,
       maxHeight: '30',
-      native: true,
+      isNative: true,
       imageUrl:
         'https://i0.wp.com/www.nznatureguy.com/wp-content/uploads/2019/06/mountain-beech.jpg?fit=2048%2C1536&ssl=1',
     },
@@ -197,7 +197,7 @@ export async function seed(knex) {
       isFlowering: true,
       isFruiting: true,
       maxHeight: 40,
-      native: true,
+      isNative: true,
       imageUrl:
         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoTuAv9rhUIZL1SRNn4cxDarpZnHHsQNsQVA&usqp=CAU',
     },
@@ -208,7 +208,7 @@ export async function seed(knex) {
       isFlowering: false,
       isFruiting: false,
       maxHeight: 35,
-      native: true,
+      isNative: true,
       imageUrl:
         'https://futuretreehealth.com.au/wp-content/uploads/2023/07/Rimu-1024x574.jpg',
     },
@@ -219,7 +219,7 @@ export async function seed(knex) {
       isFlowering: false,
       isFruiting: false,
       maxHeight: 16,
-      native: true,
+      isNative: true,
       imageUrl:
         'https://i.pinimg.com/736x/4d/37/64/4d3764e22eaa9742af1719f6493eddcb.jpg',
     },
@@ -230,9 +230,9 @@ export async function seed(knex) {
       isFlowering: true,
       isFruiting: true,
       maxHeight: 25,
-      native: true,
+      isNative: true,
       imageUrl:
-        'https://www.thelionslodge.co.nz/images/250/226/tree-totara-northland-native?h=036c9aa8',
+        'https://www.thelionslodge.co.nz/images/250/226/tree-totara-northland-isNative?h=036c9aa8',
     },
     {
       id: 22,
@@ -241,7 +241,7 @@ export async function seed(knex) {
       isFlowering: false,
       isFruiting: false,
       maxHeight: 15,
-      native: true,
+      isNative: true,
       imageUrl:
         'https://nznurseries.co.nz/wp-content/uploads/2022/03/kanuka-Flowing-website.jpeg',
     },
@@ -252,7 +252,7 @@ export async function seed(knex) {
       isFlowering: true,
       isFruiting: false,
       maxHeight: 10,
-      native: true,
+      isNative: true,
       imageUrl:
         'https://static.wixstatic.com/media/d9899a_2eeefdb772c340fa81cb0708e491efe3~mv2.jpg/v1/fill/w_480,h_322,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/d9899a_2eeefdb772c340fa81cb0708e491efe3~mv2.jpg',
     },
@@ -263,7 +263,7 @@ export async function seed(knex) {
       isFlowering: false,
       isFruiting: false,
       maxHeight: 0.3,
-      native: true,
+      isNative: true,
       imageUrl:
         'https://www.oratianatives.co.nz/images/get_photo.php?photo_id=340',
     },
@@ -274,7 +274,7 @@ export async function seed(knex) {
       isFlowering: false,
       isFruiting: false,
       maxHeight: 4,
-      native: true,
+      isNative: true,
       imageUrl:
         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSC0BMBVdAJsvPJ3hH-fqY8TL_S2kiz63hzGzF5U4EeC3htiEvjNgRslmMNSlkzmHJzmM&usqp=CAU',
     },
@@ -285,7 +285,7 @@ export async function seed(knex) {
       isFlowering: false,
       isFruiting: false,
       maxHeight: 1.5,
-      native: true,
+      isNative: true,
       imageUrl:
         'https://www.ttc.org.nz/pmwiki/pmwiki.php/InTheHills/InTheHills2016-08?action=createthumb&imcl=&upname=th386---ffffff--kiwakiwa.jpg.jpg',
     },
@@ -296,7 +296,7 @@ export async function seed(knex) {
       isFlowering: true,
       isFruiting: false,
       maxHeight: 60,
-      native: false,
+      isNative: false,
       imageUrl:
         'https://gardengoodsdirect.com/cdn/shop/articles/blog_header_45_830x.jpg?v=1669651491',
     },
@@ -307,7 +307,7 @@ export async function seed(knex) {
       isFlowering: true,
       isFruiting: false,
       maxHeight: 2,
-      native: false,
+      isNative: false,
       imageUrl:
         'https://beehavengardens.nz/wp-content/uploads/2023/09/Thornless-blackberry.jpg',
     },
