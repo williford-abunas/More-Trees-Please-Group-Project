@@ -3,7 +3,7 @@ import { Bird } from '../../models/birdsModel'
 import { Plant } from '../../models/plantsModel'
 
 export async function getAllNativePlants(): Promise<Plant[]> {
-  return await connection('plants').select('*').where({ isNative: true })
+  return await connection('plants').select().where({ isNative: true })
 }
 
 export async function getAllNativePlantsByRegion(): Promise<Plant[]> {

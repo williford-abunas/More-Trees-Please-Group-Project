@@ -11,6 +11,11 @@ export async function getBirds() {
   return response.body as Bird[]
 }
 
+export async function getNativePlants() {
+  const response = await request.get(rootUrl + '/plants')
+  return response.body as Plant[]
+}
+
 // function logError(err: Error) {
 //   console.log(err)
 //   if (err.message === 'Username Taken') {

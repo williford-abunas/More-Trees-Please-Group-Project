@@ -13,7 +13,7 @@ server.use(express.json())
 server.use(express.static(Path.join(__dirname, 'public')))
 
 //plant routes? bird routes?
-server.use('/api/v1/birds', router)
+server.use('/api/v1', router)
 
 server.get('*', (req, res) => {
   res.sendFile(Path.join(__dirname, 'public/index.html'))
