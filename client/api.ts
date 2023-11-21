@@ -7,7 +7,6 @@ const rootUrl = '/api/v1'
 
 export async function getBirds() {
   const response = await request.get(rootUrl + '/birds')
-  console.log('route working')
   return response.body as Bird[]
 }
 

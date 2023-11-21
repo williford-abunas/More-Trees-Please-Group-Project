@@ -18,13 +18,14 @@ router.get('/', async (req, res) => {
 
 //Location GETS
 
-router.get('/:region', async (req, res) => {
-  const region = req.params.region
+router.get('/:id', async (req, res) => {
+  const region = req.params.id
+  parseInt(region)
   try {
-    const allBirds = await db.getAllBirds()
-    const regionTrees = await db.getAllNativePlants()
-    res.json(allBirds)
-    // res.json(regionTrees)
+    // const allBirds = await db.getAllBirds()
+    const regionTrees = await db.getAllNativePlantsByRegion(region)
+    // res.json(allBirds)
+    res.json(regionTrees)
   } catch (error) {
     console.log(error)
     res.status(500).json({ message: `This isn't working!` })

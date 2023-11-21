@@ -6,11 +6,9 @@ export async function getAllNativePlants(): Promise<Plant[]> {
   return await connection('plants').select('*').where({ isNative: true })
 }
 
-export async function getAllNativePlantsByRegion(): Promise<Plant[]> {
-  return await connection('plants')
-    .select('region')
-    .where({ isNative: true })
-    .groupBy('region')
+export async function getAllNativePlantsByRegion(id): Promise<Plant[]> {
+  return await connection('plants').where('region', id)
+  // .groupBy('region')
 }
 
 export async function getAllBirds(): Promise<Bird[]> {
