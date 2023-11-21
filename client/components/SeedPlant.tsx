@@ -13,6 +13,8 @@ interface SeedInventoryProps {
   onSelectSeed: (seed: Seed) => void
 }
 
+//Seed Inventory component
+//Can be modified from data coming from db
 const SeedInventory: React.FC<SeedInventoryProps> = ({
   seeds,
   onSelectSeed,
@@ -97,10 +99,14 @@ const SeedPlanting: React.FC<SeedPlantingProps> = ({
 
 // Example usage
 const SeedPlant: React.FC = () => {
+
+  //Dummy data to be replaced
   const [seeds, setSeeds] = useState<Seed[]>([
     { id: 1, name: 'Sunflower', color: 'yellow', radius: 8 },
     { id: 2, name: 'Rose', color: 'red', radius: 10 },
+    { id: 3, name: 'Lavender', color: 'purple', radius: 15 },
   ])
+
   const [selectedSeed, setSelectedSeed] = useState<Seed | null>(null)
 
   const handleSelectSeed = (seed: Seed) => {
