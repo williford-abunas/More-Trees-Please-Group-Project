@@ -1,4 +1,4 @@
-export default function UpperZone({ onZoneClick }) {
+export default function CentralZone({ onZoneClick }) {
   function handleOnClick() {
     console.log('Home')
     {
@@ -10,7 +10,7 @@ export default function UpperZone({ onZoneClick }) {
       <button onClick={handleOnClick}> HOME </button>
       <div>
         {' '}
-        <img src="images/terrain01.jpg" />
+        <img src="images/terrain02.jpg" />
       </div>
     </>
   )

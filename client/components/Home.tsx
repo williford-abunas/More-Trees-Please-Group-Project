@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-export default function Home() {
+export default function Home({ onZoneClick }) {
   // function mouseHover() {
   //   document
   //     .getElementsByClassName('upper')[0]
@@ -11,11 +11,6 @@ export default function Home() {
   const [isHoveredUpper, setIsHoveredUpper] = useState(false)
   const [isHoveredCentral, setIsHoveredCentral] = useState(false)
   const [isHoveredLower, setIsHoveredLower] = useState(false)
-
-  const [showHome, setShowHome] = React.useState(true)
-  const [showUpper, setShowUpper] = React.useState(true)
-  const [showCentral, setShowCentral] = React.useState(true)
-  const [showLower, setShowLower] = React.useState(true)
 
   const handleMouseEnterUpper = () => {
     setIsHoveredUpper(true)
@@ -51,18 +46,21 @@ export default function Home() {
 
   function handleOnClickUpper() {
     console.log('Upper')
-    setShowHome(false)
-    setShowUpper(true)
+    {
+      onZoneClick('section1')
+    }
   }
   function handleOnClickCentral() {
     console.log('Central')
-    setShowHome(false)
-    setShowCentral(true)
+    {
+      onZoneClick('section2')
+    }
   }
   function handleOnClickLower() {
     console.log('Lower')
-    setShowHome(false)
-    setShowLower(true)
+    {
+      onZoneClick('section3')
+    }
   }
 
   return (
