@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
+import saplingImage from '../../images/top-tree-png-4131.png'
 
 interface Seed {
   id: number
@@ -19,59 +20,47 @@ const SeedInventory: React.FC<SeedInventoryProps> = ({
   return (
     <div>
       <h3>Seed Inventory</h3>
-      <ul>
-        {seeds.map((seed) => (
-          <li key={seed.id} onClick={() => onSelectSeed(seed)}>
-            {seed.name}
-          </li>
-        ))}
-      </ul>
+
+      {seeds.map((seed) => (
+        <button key={seed.id} onClick={() => onSelectSeed(seed)}>
+          {seed.name}
+        </button>
+      ))}
     </div>
   )
 }
 
 interface SeedPlantingProps {
   imageSrc: string
-  saplingSrc: string
   selectedSeed: Seed | null
   plantSeed: (coordinate: { x: number; y: number }) => void
 }
 
 const SeedPlanting: React.FC<SeedPlantingProps> = ({
   imageSrc,
-  saplingSrc,
   selectedSeed,
   plantSeed,
 }) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
-  const saplingImageRef = useRef<HTMLImageElement | null>(null)
 
   useEffect(() => {
     const canvas = canvasRef.current
-    const saplingImage = new Image()
+    if (!canvas) return
 
-    if (canvas) {
-      const ctx = canvas.getContext('2d')
-      if (!ctx) return
+    const ctx = canvas.getContext('2d')
+    if (!ctx) return
 
-      const image = new Image()
-      image.src = imageSrc
+    const image = new Image()
+    image.src = imageSrc
 
-      saplingImage.src = saplingSrc
+    image.onload = () => {
+      canvas.width = image.width
+      canvas.height = image.height
 
-      image.onload = () => {
-        canvas.width = image.width
-        canvas.height = image.height
-
-        //Draw the image on the canvas
-        ctx.drawImage(image, 0, 0, image.width, image.height)
-      }
-
-      saplingImage.onload = () => {
-        saplingImageRef.current = saplingImage
-      }
+      // Draw the image on the canvas
+      ctx.drawImage(image, 0, 0, image.width, image.height)
     }
-  }, [imageSrc, saplingSrc])
+  }, [imageSrc])
 
   const handlePlantSeed = (event: React.MouseEvent<HTMLCanvasElement>) => {
     // Get mouse coordinates relative to the canvas
@@ -83,6 +72,22 @@ const SeedPlanting: React.FC<SeedPlantingProps> = ({
 
     // Plant the selected seed at the coordinates
     if (selectedSeed) {
+      const ctx = canvas.getContext('2d')
+      if (ctx) {
+        const sapling = new Image()
+        sapling.src = saplingImage
+
+        sapling.onload = () => {
+          ctx.drawImage(
+            sapling,
+            x,
+            y,
+            selectedSeed.radius || 20,
+            selectedSeed.radius || 20
+          )
+        }
+      }
+
       plantSeed({ x, y })
     }
   }
