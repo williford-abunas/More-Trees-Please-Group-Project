@@ -1,9 +1,14 @@
 import request from 'superagent'
 
-import { Bird } from '../models/birdsModel.ts'
-import { Plant } from '../models/plantsModel.ts'
+import { Bird } from '../models/birdsModel'
+import { Plant } from '../models/plantsModel'
 
 const rootUrl = '/api/v1'
+
+export async function getBirds() {
+  const response = await request.get(rootUrl + '/upper')
+  return response.body as Bird[]
+}
 
 // function logError(err: Error) {
 //   console.log(err)
