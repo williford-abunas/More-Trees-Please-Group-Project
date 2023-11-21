@@ -11,16 +11,7 @@ export async function getBirds() {
   return response.body as Bird[]
 }
 
-// function logError(err: Error) {
-//   console.log(err)
-//   if (err.message === 'Username Taken') {
-//     throw new Error('Username already taken - please choose another')
-//   } else if (err.message === 'Forbidden') {
-//     throw new Error(
-//       'Only the user who added the fruit may update and delete it'
-//     )
-//   } else {
-//     console.error('Error consuming the API (in client/api.js):', err.message)
-//     throw err
-//   }
-// }
+export async function getNativePlants() {
+  const response = await request.get(rootUrl + '/plants')
+  return response.body as Plant[]
+}

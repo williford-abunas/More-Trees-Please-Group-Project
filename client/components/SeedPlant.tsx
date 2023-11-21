@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import saplingImage from '../../images/top-tree-png-4131.png'
+import Header from './Header'
 
 interface Seed {
   id: number
@@ -99,7 +100,6 @@ const SeedPlanting: React.FC<SeedPlantingProps> = ({
 
 // Example usage
 const SeedPlant: React.FC = () => {
-
   //Dummy data to be replaced
   const [seeds, setSeeds] = useState<Seed[]>([
     { id: 1, name: 'Sunflower', color: 'yellow', radius: 8 },
@@ -121,6 +121,7 @@ const SeedPlant: React.FC = () => {
 
   return (
     <div>
+      <Header />
       <SeedInventory seeds={seeds} onSelectSeed={handleSelectSeed} />
       <SeedPlanting
         imageSrc="images/New Zealand Sliced/01_central.jpg"
