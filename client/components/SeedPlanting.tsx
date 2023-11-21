@@ -32,35 +32,46 @@ const SeedInventory: React.FC<SeedInventoryProps> = ({
 
 interface SeedPlantingProps {
   imageSrc: string
+  saplingSrc: string
   selectedSeed: Seed | null
   plantSeed: (coordinate: { x: number; y: number }) => void
 }
 
 const SeedPlanting: React.FC<SeedPlantingProps> = ({
   imageSrc,
+  saplingSrc,
   selectedSeed,
   plantSeed,
 }) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
+  const saplingImageRef = useRef<HTMLImageElement | null>(null)
 
   useEffect(() => {
     const canvas = canvasRef.current
-    if (!canvas) return
+    const saplingImage = new Image()
 
-    const ctx = canvas.getContext('2d')
-    if (!ctx) return
+    if (canvas) {
+      const ctx = canvas.getContext('2d')
+      if (!ctx) return
 
-    const image = new Image()
-    image.src = imageSrc
+      const image = new Image()
+      image.src = imageSrc
 
-    image.onload = () => {
-      canvas.width = image.width
-      canvas.height = image.height
+      saplingImage.src = saplingSrc
 
-      // Draw the image on the canvas
-      ctx.drawImage(image, 0, 0, image.width, image.height)
+      image.onload = () => {
+        canvas.width = image.width
+        canvas.height = image.height
+
+        //Draw the image on the canvas
+        ctx.drawImage(image, 0, 0, image.width, image.height)
+      }
+
+      saplingImage.onload = () => {
+        saplingImageRef.current = saplingImage
+      }
     }
-  }, [imageSrc])
+  }, [imageSrc, saplingSrc])
 
   const handlePlantSeed = (event: React.MouseEvent<HTMLCanvasElement>) => {
     // Get mouse coordinates relative to the canvas
