@@ -1,8 +1,17 @@
 export default function LowerZone({ onZoneClick }) {
+  function handleOnClick() {
+    console.log('Home')
+    {
+      onZoneClick('home')
+    }
+  }
   return (
-    <div>
-      {' '}
-      <img src="images/terrain03.jpg" />
-    </div>
+    <>
+      <button onClick={handleOnClick}> HOME </button>
+      <div>
+        {' '}
+        <img src="images/terrain03.jpg" />
+      </div>
+    </>
   )
 }
