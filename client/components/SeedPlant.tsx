@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react'
 import saplingImage from '../../images/top-tree-png-4131.png'
 import Header from './Header'
+import { getNativePlants } from '../api'
+import { Plant } from '../../models/plantsModel'
 
 interface Seed {
   id: number
@@ -99,13 +101,18 @@ const SeedPlanting: React.FC<SeedPlantingProps> = ({
 }
 
 // Example usage
-const SeedPlant: React.FC = () => {
+const SeedPlant: React.FC = ({ plants }: Plant[]) => {
   //Dummy data to be replaced
-  const [seeds, setSeeds] = useState<Seed[]>([
-    { id: 1, name: 'Sunflower', color: 'yellow', radius: 8 },
-    { id: 2, name: 'Rose', color: 'red', radius: 10 },
-    { id: 3, name: 'Lavender', color: 'purple', radius: 15 },
-  ])
+
+  // const [seeds, setSeeds] = useState<Seed[]>([
+  //   { id: 1, name: 'Sunflower', color: 'yellow', radius: 8 },
+  //   { id: 2, name: 'Rose', color: 'red', radius: 10 },
+  //   { id: 3, name: 'Lavender', color: 'purple', radius: 15 },
+  // ])
+
+  const seeds = plants.filter((plant: Plant) => plant.region === 0)
+
+  // const [seeds, setSeeds] = useState<Seed[]>({seedData})
 
   const [selectedSeed, setSelectedSeed] = useState<Seed | null>(null)
 
@@ -121,10 +128,9 @@ const SeedPlant: React.FC = () => {
 
   return (
     <div>
-      <Header />
       <SeedInventory seeds={seeds} onSelectSeed={handleSelectSeed} />
       <SeedPlanting
-        imageSrc="images/New Zealand Sliced/01_central.jpg"
+        imageSrc="images/terrain01.jpg"
         selectedSeed={selectedSeed}
         plantSeed={handlePlantSeed}
       />

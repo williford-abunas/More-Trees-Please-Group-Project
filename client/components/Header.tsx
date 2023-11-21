@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import * as api from '../api'
 import { Plant } from '../../models/plantsModel'
 import { getNativePlants } from '../api'
+import SeedPlant from './SeedPlant'
 
 const Header = () => {
   const [inv, setInv] = useState([
@@ -24,6 +25,7 @@ const Header = () => {
   async function getRandomSeed() {
     const seeds = await getNativePlants()
     // use the above line once API client functions are created
+    console.log(seeds)
 
     // const seeds = [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }]
     // the above line is just sample data for testing purposes
@@ -40,7 +42,7 @@ const Header = () => {
   useEffect(() => {
     const intervalId = setInterval(() => {
       populateInventory()
-    }, 10000)
+    }, 5000)
     // ^ change timer to fit game mechanics
     return () => clearInterval(intervalId)
   }, [])
@@ -55,8 +57,12 @@ const Header = () => {
       </p>
       Seeds:
       {inv.map((item, i) => (
-        <span key={i}> {item.name} </span>
+        <span key={i}>
+          {' '}
+          {item.name} ({item.region})|{' '}
+        </span>
       ))}
+      <SeedPlant plants={inv}/>
     </div>
   )
 }
