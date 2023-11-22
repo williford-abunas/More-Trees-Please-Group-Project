@@ -27,8 +27,6 @@ const Header = () => {
     // use the above line once API client functions are created
     console.log(seeds)
 
-    // const seeds = [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }]
-    // the above line is just sample data for testing purposes
     const randomSeed = seeds[getRandomNumber(seeds.length)]
     return randomSeed
   }
@@ -62,7 +60,7 @@ const Header = () => {
           {item.name} ({item.region})|{' '}
         </span>
       ))}
-      <SeedPlant plants={inv}/>
+      <SeedPlant plants={inv} />
     </div>
   )
 }

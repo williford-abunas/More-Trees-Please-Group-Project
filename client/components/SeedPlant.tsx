@@ -100,19 +100,8 @@ const SeedPlanting: React.FC<SeedPlantingProps> = ({
   return <canvas ref={canvasRef} onClick={handlePlantSeed} />
 }
 
-// Example usage
-const SeedPlant: React.FC = ({ plants }: Plant[]) => {
-  //Dummy data to be replaced
-
-  // const [seeds, setSeeds] = useState<Seed[]>([
-  //   { id: 1, name: 'Sunflower', color: 'yellow', radius: 8 },
-  //   { id: 2, name: 'Rose', color: 'red', radius: 10 },
-  //   { id: 3, name: 'Lavender', color: 'purple', radius: 15 },
-  // ])
-
+const SeedPlant = ({ plants }: Plant[]) => {
   const seeds = plants.filter((plant: Plant) => plant.region === 0)
-
-  // const [seeds, setSeeds] = useState<Seed[]>({seedData})
 
   const [selectedSeed, setSelectedSeed] = useState<Seed | null>(null)
 
