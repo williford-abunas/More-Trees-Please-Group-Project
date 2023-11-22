@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react'
 import saplingImage from '../../images/top-tree-png-4131.png'
 import Header from './Header'
+import { getNativePlants } from '../api'
+import { Plant } from '../../models/plantsModel'
 
 interface Seed {
   id: number
@@ -98,14 +100,8 @@ const SeedPlanting: React.FC<SeedPlantingProps> = ({
   return <canvas ref={canvasRef} onClick={handlePlantSeed} />
 }
 
-// Example usage
-const SeedPlant: React.FC = () => {
-  //Dummy data to be replaced
-  const [seeds, setSeeds] = useState<Seed[]>([
-    { id: 1, name: 'Sunflower', color: 'yellow', radius: 8 },
-    { id: 2, name: 'Rose', color: 'red', radius: 10 },
-    { id: 3, name: 'Lavender', color: 'purple', radius: 15 },
-  ])
+const SeedPlant = ({ plants }: Plant[]) => {
+  const seeds = plants.filter((plant: Plant) => plant.region === 0)
 
   const [selectedSeed, setSelectedSeed] = useState<Seed | null>(null)
 
@@ -121,10 +117,9 @@ const SeedPlant: React.FC = () => {
 
   return (
     <div>
-      <Header />
       <SeedInventory seeds={seeds} onSelectSeed={handleSelectSeed} />
       <SeedPlanting
-        imageSrc="images/New Zealand Sliced/01_central.jpg"
+        imageSrc="images/terrain01.jpg"
         selectedSeed={selectedSeed}
         plantSeed={handlePlantSeed}
       />
