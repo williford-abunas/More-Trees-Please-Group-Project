@@ -76,19 +76,20 @@ const SeedPlanting: React.FC<SeedPlantingProps> = ({
     const y = event.clientY - rect.top
 
     // Plant the selected seed at the coordinates
+    console.log(selectedSeed)
     if (selectedSeed) {
       const ctx = canvas.getContext('2d')
       if (ctx) {
         const sapling = new Image()
-        sapling.src = saplingImage
+        sapling.src = selectedSeed.imageUrl
 
         sapling.onload = () => {
           ctx.drawImage(
             sapling,
             x,
             y,
-            selectedSeed.radius || 20,
-            selectedSeed.radius || 20
+            selectedSeed.radius || 60,
+            selectedSeed.radius || 60
           )
         }
       }
@@ -100,15 +101,16 @@ const SeedPlanting: React.FC<SeedPlantingProps> = ({
   return <canvas ref={canvasRef} onClick={handlePlantSeed} />
 }
 
-const SeedPlant = ({ plants }: Plant[]) => {
-  const seeds = plants.filter((plant: Plant) => plant.region === 0)
+const SeedPlant = ({ seeds, imageSource }: Plant[]) => {
+  // const seeds = plants.filter((plant: Plant) => plant.region === 0)
+  console.log(seeds)
 
   const [selectedSeed, setSelectedSeed] = useState<Seed | null>(null)
 
   const handleSelectSeed = (seed: Seed) => {
     setSelectedSeed(seed)
   }
-
+  
   const handlePlantSeed = (coordinate: { x: number; y: number }) => {
     // Implement logic to plant the selected seed at the specified coordinates
     // For simplicity, this example logs the seed and coordinates
@@ -119,7 +121,7 @@ const SeedPlant = ({ plants }: Plant[]) => {
     <div>
       <SeedInventory seeds={seeds} onSelectSeed={handleSelectSeed} />
       <SeedPlanting
-        imageSrc="images/terrain01.jpg"
+        imageSrc={imageSource}
         selectedSeed={selectedSeed}
         plantSeed={handlePlantSeed}
       />

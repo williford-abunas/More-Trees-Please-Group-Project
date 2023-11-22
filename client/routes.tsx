@@ -6,13 +6,13 @@ import SeedPlant from './components/SeedPlant.tsx'
 
 export const routes = createRoutesFromElements(
   <Route path="/" element={<AppLayout />}>
-    <Route
+    {/* <Route
       path=""
       element={
         <Wrapper>
           <Home />
         </Wrapper>
       }
-    />
+    /> */}
   </Route>
 )

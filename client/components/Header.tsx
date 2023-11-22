@@ -3,6 +3,8 @@ import * as api from '../api'
 import { Plant } from '../../models/plantsModel'
 import { getNativePlants } from '../api'
 import SeedPlant from './SeedPlant'
+import CentralZone from './CentralZone'
+import Wrapper from './Wrapper'
 
 const Header = () => {
   const [inv, setInv] = useState([
@@ -60,7 +62,7 @@ const Header = () => {
           {item.name} ({item.region})|{' '}
         </span>
       ))}
-      <SeedPlant plants={inv} />
+      <Wrapper seeds={inv} />
     </div>
   )
 }

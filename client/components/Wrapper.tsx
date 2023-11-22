@@ -6,9 +6,9 @@ import CentralZone from './CentralZone'
 import LowerZone from './LowerZone'
 import Header from './Header'
 
-export default function Wrapper() {
+export default function Wrapper({ seeds }) {
   const [selected, setSelected] = useState('home')
-
+  console.log({ seeds })
   const handleZoneClick = (zone) => {
     setSelected(zone)
   }
@@ -16,11 +16,29 @@ export default function Wrapper() {
   const renderComponent = () => {
     switch (selected) {
       case 'section1':
-        return <UpperZone onZoneClick={handleZoneClick} />
+        return (
+          <UpperZone
+            onZoneClick={handleZoneClick}
+            seeds={{ seeds }}
+            imageSource={'images/terrain01.jpg'}
+          />
+        )
       case 'section2':
-        return <CentralZone onZoneClick={handleZoneClick} />
+        return (
+          <CentralZone
+            onZoneClick={handleZoneClick}
+            seeds={{ seeds }}
+            imageSource={'images/terrain02.jpg'}
+          />
+        )
       case 'section3':
-        return <LowerZone onZoneClick={handleZoneClick} />
+        return (
+          <LowerZone
+            onZoneClick={handleZoneClick}
+            seeds={{ seeds }}
+            imageSource={'images/terrain03.jpg'}
+          />
+        )
       default:
         return <Home onZoneClick={handleZoneClick} />
     }
