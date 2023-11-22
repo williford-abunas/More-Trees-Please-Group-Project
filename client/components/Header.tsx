@@ -42,7 +42,7 @@ const Header = () => {
   useEffect(() => {
     const intervalId = setInterval(() => {
       populateInventory()
-    }, 5000)
+    }, 2000)
     // ^ change timer to fit game mechanics
     return () => clearInterval(intervalId)
   }, [])

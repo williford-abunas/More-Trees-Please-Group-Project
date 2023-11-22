@@ -102,6 +102,7 @@ const SeedPlanting: React.FC<SeedPlantingProps> = ({
 }
 
 const SeedPlant = ({ seeds, imageSource }: Plant[]) => {
+  const [plantStorage, setPlantStorage] = useState([])
   // const seeds = plants.filter((plant: Plant) => plant.region === 0)
   console.log(seeds)
 
@@ -110,12 +111,38 @@ const SeedPlant = ({ seeds, imageSource }: Plant[]) => {
   const handleSelectSeed = (seed: Seed) => {
     setSelectedSeed(seed)
   }
-  
+
   const handlePlantSeed = (coordinate: { x: number; y: number }) => {
     // Implement logic to plant the selected seed at the specified coordinates
     // For simplicity, this example logs the seed and coordinates
-    console.log('Planting seed:', selectedSeed, 'at coordinates:', coordinate)
+
+    const timestamp = new Date().toLocaleString()
+    console.log(
+      'Planting seed:',
+      selectedSeed,
+      'at coordinates:',
+      coordinate,
+      'time:',
+      timestamp
+    )
+
+    console.log('selectedSeed:', selectedSeed)
+    const indextoDelete = seeds.findIndex((seed) => {
+      return seed.name === selectedSeed?.name
+    })
+
+    seeds.splice(indextoDelete, 1)
+
+    const plantedSeed = { ...selectedSeed, ...coordinate, timestamp }
+    setPlantStorage((prevStorage) => [...prevStorage, plantedSeed])
+
+    setSelectedSeed(null)
   }
+
+  // Async nature means we have to have console log in useEffect or the data is one step before
+  useEffect(() => {
+    console.log('Plant storage:', plantStorage)
+  }, [plantStorage])
 
   return (
     <div>
