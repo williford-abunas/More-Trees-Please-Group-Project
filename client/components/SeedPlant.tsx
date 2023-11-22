@@ -139,7 +139,7 @@ const SeedPlant = ({ seeds, imageSource }: Plant[]) => {
       imgSrc: imageSource,
       timestamp,
     }
-    setPlantStorage((prevStorage) => [...prevStorage, plantedSeed])
+    setPlantStorage((prevStorage) => [plantedSeed])
 
     setSelectedSeed(null)
   }
