@@ -2,12 +2,12 @@ import SeedPlant from './SeedPlant'
 
 export default function CentralZone({ onZoneClick, seeds, imageSource }) {
   function handleOnClick() {
-    console.log('Home')
+    // console.log('Home')
     {
       onZoneClick('home')
     }
   }
-  console.log(seeds.seeds)
+  // console.log(seeds.seeds)
 
   return (
     <>
@@ -15,7 +15,7 @@ export default function CentralZone({ onZoneClick, seeds, imageSource }) {
       <div>
         {' '}
         {/* <img src="images/terrain02.jpg" /> */}
-        <SeedPlant seeds={seeds.seeds} imageSource={imageSource}/>
+        <SeedPlant seeds={seeds.seeds} imageSource={imageSource} />
       </div>
     </>
   )

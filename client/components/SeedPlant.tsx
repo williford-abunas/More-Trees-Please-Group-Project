@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import saplingImage from '../../images/top-tree-png-4131.png'
 import Header from './Header'
-import { getNativePlants } from '../api'
+import { addToStorage, getNativePlants } from '../api'
 import { Plant } from '../../models/plantsModel'
 
 interface Seed {
@@ -26,8 +26,8 @@ const SeedInventory: React.FC<SeedInventoryProps> = ({
     <div>
       <h3>Seed Inventory</h3>
 
-      {seeds.map((seed) => (
-        <button key={seed.id} onClick={() => onSelectSeed(seed)}>
+      {seeds.map((seed, i) => (
+        <button key={i} onClick={() => onSelectSeed(seed)}>
           {seed.name}
         </button>
       ))}
@@ -76,7 +76,7 @@ const SeedPlanting: React.FC<SeedPlantingProps> = ({
     const y = event.clientY - rect.top
 
     // Plant the selected seed at the coordinates
-    console.log(selectedSeed)
+    // console.log(selectedSeed)
     if (selectedSeed) {
       const ctx = canvas.getContext('2d')
       if (ctx) {
@@ -104,7 +104,7 @@ const SeedPlanting: React.FC<SeedPlantingProps> = ({
 const SeedPlant = ({ seeds, imageSource }: Plant[]) => {
   const [plantStorage, setPlantStorage] = useState([])
   // const seeds = plants.filter((plant: Plant) => plant.region === 0)
-  console.log(seeds)
+  // console.log(seeds)
 
   const [selectedSeed, setSelectedSeed] = useState<Seed | null>(null)
 
@@ -126,14 +126,19 @@ const SeedPlant = ({ seeds, imageSource }: Plant[]) => {
       timestamp
     )
 
-    console.log('selectedSeed:', selectedSeed)
+    // console.log('selectedSeed:', selectedSeed)
     const indextoDelete = seeds.findIndex((seed) => {
       return seed.name === selectedSeed?.name
     })
 
     seeds.splice(indextoDelete, 1)
 
-    const plantedSeed = { ...selectedSeed, ...coordinate, timestamp }
+    const plantedSeed = {
+      ...selectedSeed,
+      ...coordinate,
+      imgSrc: imageSource,
+      timestamp,
+    }
     setPlantStorage((prevStorage) => [...prevStorage, plantedSeed])
 
     setSelectedSeed(null)
@@ -141,7 +146,15 @@ const SeedPlant = ({ seeds, imageSource }: Plant[]) => {
 
   // Async nature means we have to have console log in useEffect or the data is one step before
   useEffect(() => {
-    console.log('Plant storage:', plantStorage)
+    console.log(
+      'Plant storage:',
+      plantStorage,
+      ' This is the imageSource ' + imageSource
+    )
+    async function addingPlants() {
+      await addToStorage(plantStorage)
+    }
+    addingPlants()
   }, [plantStorage])
 
   return (

@@ -14,3 +14,7 @@ export async function getAllPlants(): Promise<Plant[]> {
 export async function getAllBirds(): Promise<Bird[]> {
   return await connection('birds').select()
 }
+
+export async function addPlants(plantData: any) {
+  return connection('gameState').insert(plantData).returning('*')
+}

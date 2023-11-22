@@ -27,7 +27,7 @@ const Header = () => {
   async function getRandomSeed() {
     const seeds = await getNativePlants()
     // use the above line once API client functions are created
-    console.log(seeds)
+    // console.log(seeds)
 
     const randomSeed = seeds[getRandomNumber(seeds.length)]
     return randomSeed
@@ -42,7 +42,7 @@ const Header = () => {
   useEffect(() => {
     const intervalId = setInterval(() => {
       populateInventory()
-    }, 2000)
+    }, 5000)
     // ^ change timer to fit game mechanics
     return () => clearInterval(intervalId)
   }, [])

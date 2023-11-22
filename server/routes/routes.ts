@@ -37,4 +37,15 @@ router.get('/allBirds', async (req, res) => {
   }
 })
 
+router.post('/addPlants', async (req, res) => {
+  const plantData = req.body
+  try {
+    const addedPlants = await db.addPlants(plantData)
+    res.json(addedPlants)
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({ message: `Add Plants is not working` })
+  }
+})
+
 export default router

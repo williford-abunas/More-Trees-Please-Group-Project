@@ -2,7 +2,7 @@ import SeedPlant from './SeedPlant'
 
 export default function LowerZone({ onZoneClick, seeds, imageSource }) {
   function handleOnClick() {
-    console.log('Home')
+    // console.log('Home')
     {
       onZoneClick('home')
     }
