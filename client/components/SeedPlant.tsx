@@ -121,10 +121,9 @@ const SeedPlant: React.FC = () => {
 
   return (
     <div>
-      <Header />
       <SeedInventory seeds={seeds} onSelectSeed={handleSelectSeed} />
       <SeedPlanting
-        imageSrc="images/New Zealand Sliced/01_central.jpg"
+        imageSrc="images/terrain02.jpg"
         selectedSeed={selectedSeed}
         plantSeed={handlePlantSeed}
       />
