@@ -18,3 +18,9 @@ export async function getAllBirds(): Promise<Bird[]> {
 export async function addPlants(plantData: any) {
   return connection('gameState').insert(plantData).returning('*')
 }
+
+export async function getPlantedSeedsByRegion(region: string) {
+  return await connection('gameState')
+    .select()
+    .where('imgSrc', 'images/' + region)
+}

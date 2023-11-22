@@ -48,4 +48,17 @@ router.post('/addPlants', async (req, res) => {
   }
 })
 
+router.get('/getPlantsByRegion/images/:region', async (req, res) => {
+  const region = req.params.region
+  try {
+    const plantsByRegion = await db.getPlantedSeedsByRegion(region)
+    res.json(plantsByRegion)
+  } catch (error) {
+    console.log(error)
+    res
+      .status(500)
+      .json({ message: `Get planted plants by region is not working` })
+  }
+})
+
 export default router
