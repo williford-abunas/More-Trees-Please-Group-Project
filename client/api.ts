@@ -21,3 +21,9 @@ export async function getAllBirds() {
   const response = await request.get(rootUrl + '/allBirds')
   return response.body as Bird[]
 }
+
+export async function addToStorage(plantData) {
+  const response = await request.post(rootUrl + '/addPlants').send(plantData)
+  console.log('Api client response.body= ', response.body)
+  return response.body
+}

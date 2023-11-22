@@ -8,7 +8,7 @@ import Header from './Header'
 
 export default function Wrapper({ seeds }) {
   const [selected, setSelected] = useState('home')
-  console.log({ seeds })
+  // console.log({ seeds })
   const handleZoneClick = (zone) => {
     setSelected(zone)
   }

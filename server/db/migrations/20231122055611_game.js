@@ -1,6 +1,6 @@
 export async function up(knex) {
-  await knex.schema.createTable('plants', (table) => {
-    table.increments('id').primary()
+  await knex.schema.createTable('gameState', (table) => {
+    table.integer('id')
     table.string('name')
     table.integer('region')
     table.bool('isFlowering')
@@ -8,9 +8,14 @@ export async function up(knex) {
     table.integer('maxHeight')
     table.bool('isNative')
     table.string('imageUrl')
+    table.integer('x')
+    table.integer('y')
+    table.timestamp('timestamp')
+    table.string('imgSrc')
+    table.increments('uniqueId').primary()
   })
 }
 
 export async function down(knex) {
-  await knex.schema.dropTableIfExists('plants')
+  await knex.schema.dropTableIfExists('gameState')
 }
