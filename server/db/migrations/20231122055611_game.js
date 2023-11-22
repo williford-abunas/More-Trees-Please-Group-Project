@@ -1,6 +1,6 @@
 export async function up(knex) {
   await knex.schema.createTable('gameState', (table) => {
-    table.integer('id').primary()
+    table.integer('id')
     table.string('name')
     table.integer('region')
     table.bool('isFlowering')
@@ -12,6 +12,7 @@ export async function up(knex) {
     table.integer('y')
     table.timestamp('timestamp')
     table.string('imgSrc')
+    table.increments('uniqueId').primary()
   })
 }
 
