@@ -1,4 +1,6 @@
-export default function LowerZone({ onZoneClick }) {
+import SeedPlant from './SeedPlant'
+
+export default function LowerZone({ onZoneClick, seeds, imageSource }) {
   function handleOnClick() {
     console.log('Home')
     {
@@ -10,7 +12,7 @@ export default function LowerZone({ onZoneClick }) {
       <button onClick={handleOnClick}> HOME </button>
       <div>
         {' '}
-        <img src="images/terrain03.jpg" />
+        <SeedPlant seeds={seeds.seeds} imageSource={imageSource} />
       </div>
     </>
   )
