@@ -1,3 +1,4 @@
+import Growth from './Growth'
 import SeedPlant from './SeedPlant'
 
 export default function CentralZone({ onZoneClick, seeds, imageSource }) {
@@ -16,6 +17,7 @@ export default function CentralZone({ onZoneClick, seeds, imageSource }) {
         {' '}
         {/* <img src="images/terrain02.jpg" /> */}
         <SeedPlant seeds={seeds.seeds} imageSource={imageSource}/>
+        <Growth seeds/>
       </div>
     </>
   )
