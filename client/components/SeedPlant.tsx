@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import saplingImage from '../../images/top-tree-png-4131.png'
 import Header from './Header'
-import { addToStorage, getNativePlants } from '../api'
+import { addToStorage, getNativePlants, getPlantsByRegion } from '../api'
 import { Plant } from '../../models/plantsModel'
 
 interface Seed {
@@ -23,7 +23,7 @@ const SeedInventory: React.FC<SeedInventoryProps> = ({
   onSelectSeed,
 }) => {
   return (
-    <div>
+    <div className="tester">
       <h3>Seed Inventory</h3>
 
       {seeds.map((seed, i) => (
@@ -45,6 +45,7 @@ const SeedPlanting: React.FC<SeedPlantingProps> = ({
   imageSrc,
   selectedSeed,
   plantSeed,
+  plantedPlantsData,
 }) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
 
@@ -64,8 +65,18 @@ const SeedPlanting: React.FC<SeedPlantingProps> = ({
 
       // Draw the image on the canvas
       ctx.drawImage(image, 0, 0, image.width, image.height)
+      plantedPlantsData.forEach((plantedSeed) => {
+        const { x, y, imageUrl, radius } = plantedSeed
+
+        const plantImage = new Image()
+        plantImage.src = imageUrl
+
+        plantImage.onload = () => {
+          ctx.drawImage(plantImage, x, y, radius || 60, radius || 60)
+        }
+      })
     }
-  }, [imageSrc])
+  }, [imageSrc, plantedPlantsData])
 
   const handlePlantSeed = (event: React.MouseEvent<HTMLCanvasElement>) => {
     // Get mouse coordinates relative to the canvas
@@ -103,9 +114,7 @@ const SeedPlanting: React.FC<SeedPlantingProps> = ({
 
 const SeedPlant = ({ seeds, imageSource }: Plant[]) => {
   const [plantStorage, setPlantStorage] = useState([])
-  // const seeds = plants.filter((plant: Plant) => plant.region === 0)
-  // console.log(seeds)
-
+  const [seedsPlantedHere, setSeedsPlantedHere] = useState()
   const [selectedSeed, setSelectedSeed] = useState<Seed | null>(null)
 
   const handleSelectSeed = (seed: Seed) => {
@@ -126,10 +135,11 @@ const SeedPlant = ({ seeds, imageSource }: Plant[]) => {
       timestamp
     )
 
-    // console.log('selectedSeed:', selectedSeed)
-    const indextoDelete = seeds.findIndex((seed) => {
-      return seed.name === selectedSeed?.name
-    })
+    const indextoDelete = seeds.findIndex(
+      (seed: { name: string | undefined }) => {
+        return seed.name === selectedSeed?.name
+      }
+    )
 
     seeds.splice(indextoDelete, 1)
 
@@ -138,6 +148,7 @@ const SeedPlant = ({ seeds, imageSource }: Plant[]) => {
       ...coordinate,
       imgSrc: imageSource,
       timestamp,
+      isMature: false,
     }
     setPlantStorage((prevStorage) => [plantedSeed])
 
@@ -155,7 +166,25 @@ const SeedPlant = ({ seeds, imageSource }: Plant[]) => {
       await addToStorage(plantStorage)
     }
     addingPlants()
-  }, [plantStorage])
+  }, [imageSource, plantStorage])
+
+  // Rendering planted plants when you return to area
+
+  async function getPlantsFromRoute(region: { imageSource: any }) {
+    const strSplit = region.imageSource.split('/')
+
+    const seedsPlanted = await getPlantsByRegion(strSplit[1])
+    setSeedsPlantedHere(seedsPlanted)
+  }
+
+  useEffect(() => {
+    async function fetchData() {
+      const region = { imageSource }
+      await getPlantsFromRoute(region)
+    }
+
+    fetchData()
+  }, [imageSource])
 
   return (
     <div>
@@ -164,6 +193,7 @@ const SeedPlant = ({ seeds, imageSource }: Plant[]) => {
         imageSrc={imageSource}
         selectedSeed={selectedSeed}
         plantSeed={handlePlantSeed}
+        plantedPlantsData={seedsPlantedHere}
       />
     </div>
   )

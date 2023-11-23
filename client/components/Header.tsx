@@ -60,7 +60,7 @@ const Header = () => {
       {inv.map((item, i) => (
         <span key={i}>
           {' '}
-          {item.name} ({item.region})|{' '}
+          {item?.name} ({item?.region})|{' '}
         </span>
       ))}
       <Bird />

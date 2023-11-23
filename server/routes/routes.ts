@@ -49,6 +49,7 @@ router.post('/addPlants', async (req, res) => {
   }
 })
 
+<<<<<<< HEAD
 //Random Bird
 // router.get('/randomBird', async (req, res) => {
 //   try {
@@ -60,5 +61,19 @@ router.post('/addPlants', async (req, res) => {
 //     res.status(500).json({ message: `Cannot get random bird` })
 //   }
 // })
+=======
+router.get('/getPlantsByRegion/images/:region', async (req, res) => {
+  const region = req.params.region
+  try {
+    const plantsByRegion = await db.getPlantedSeedsByRegion(region)
+    res.json(plantsByRegion)
+  } catch (error) {
+    console.log(error)
+    res
+      .status(500)
+      .json({ message: `Get planted plants by region is not working` })
+  }
+})
+>>>>>>> 74765ca1391c6df42d200ce7af264bea88079d69
 
 export default router
