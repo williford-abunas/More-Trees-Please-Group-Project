@@ -78,13 +78,23 @@ const SeedPlanting: React.FC<SeedPlantingProps> = ({
       // Draw the image on the canvas
       ctx.drawImage(image, 0, 0, image.width, image.height)
       plantedPlantsData.forEach((plantedSeed) => {
-        const { x, y, imageUrl, radius } = plantedSeed
+        if (plantedSeed.isMature == false) {
+          const { x, y, imageUrl, radius } = plantedSeed
+          const plantImage = new Image()
+          plantImage.src = 'images/topDownTree3.png'
 
-        const plantImage = new Image()
-        plantImage.src = imageUrl
+          plantImage.onload = () => {
+            ctx.drawImage(plantImage, x, y, radius || 60, radius || 60)
+          }
+          return
+        } else {
+          const { x, y, imageUrl, radius } = plantedSeed
+          const plantImage = new Image()
+          plantImage.src = imageUrl
 
-        plantImage.onload = () => {
-          ctx.drawImage(plantImage, x, y, radius || 60, radius || 60)
+          plantImage.onload = () => {
+            ctx.drawImage(plantImage, x, y, radius || 60, radius || 60)
+          }
         }
       })
     }
@@ -99,12 +109,12 @@ const SeedPlanting: React.FC<SeedPlantingProps> = ({
     const y = event.clientY - rect.top
 
     // Plant the selected seed at the coordinates
-    // console.log(selectedSeed)
     if (selectedSeed) {
       const ctx = canvas.getContext('2d')
       if (ctx) {
         const sapling = new Image()
-        sapling.src = selectedSeed.imageUrl
+        // sapling.src = selectedSeed.imageUrl
+        sapling.src = 'images/topDownTree3.png'
 
         sapling.onload = () => {
           ctx.drawImage(
