@@ -11,7 +11,12 @@
 }
 
 .bird {
-  width: 100px
+  width: 60px;
+}
+
+.bird-images{
+  overflow: auto;
+  white-space: nowrap;
 }
 
 .tester button:nth-child(2){
