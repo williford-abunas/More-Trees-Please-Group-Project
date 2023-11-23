@@ -74,7 +74,7 @@ const Bird: React.FC = () => {
   return (
     <>
       <div>
-        <p>Current Birds Sighted:</p>
+        <p>Birds Spawned:</p>
 
         {birdArray.map((b, index) => (
           <img
