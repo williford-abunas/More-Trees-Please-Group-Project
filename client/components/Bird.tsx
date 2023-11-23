@@ -40,11 +40,13 @@ const Bird: React.FC = () => {
       <div>{bird && <p>New Bird Sighted: {bird.name}</p>}</div>
       <div>
         <p>Current Birds Sighted:</p>
-        <ul>
-          {birdArray.map((b, index) => (
-            <li key={index}>{b.name}</li>
-          ))}
-        </ul>
+
+        {birdArray.map((b, index) => (
+          <span key={index}>
+            {b.name}
+            <span> | </span>
+          </span>
+        ))}
       </div>
     </>
   )
