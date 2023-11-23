@@ -3,6 +3,9 @@ import saplingImage from '../../images/top-tree-png-4131.png'
 import Header from './Header'
 import { addToStorage, getNativePlants, getPlantsByRegion } from '../api'
 import { Plant } from '../../models/plantsModel'
+import Growth from './Growth'
+import { getAllPlantedSeeds } from '../../server/db/db'
+import { checkGrowth } from './Growth'
 
 interface Seed {
   id: number
@@ -62,6 +65,7 @@ const SeedPlanting: React.FC<SeedPlantingProps> = ({
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
 
   useEffect(() => {
+    checkGrowth()
     const canvas = canvasRef.current
     if (!canvas) return
 
@@ -78,13 +82,23 @@ const SeedPlanting: React.FC<SeedPlantingProps> = ({
       // Draw the image on the canvas
       ctx.drawImage(image, 0, 0, image.width, image.height)
       plantedPlantsData.forEach((plantedSeed) => {
-        const { x, y, imageUrl, radius } = plantedSeed
+        if (plantedSeed.isMature == false) {
+          const { x, y, imageUrl, radius } = plantedSeed
+          const plantImage = new Image()
+          plantImage.src = 'images/topDownTree3.png'
 
-        const plantImage = new Image()
-        plantImage.src = imageUrl
+          plantImage.onload = () => {
+            ctx.drawImage(plantImage, x, y, radius || 60, radius || 60)
+          }
+          return
+        } else {
+          const { x, y, imageUrl, radius } = plantedSeed
+          const plantImage = new Image()
+          plantImage.src = imageUrl
 
-        plantImage.onload = () => {
-          ctx.drawImage(plantImage, x, y, radius || 60, radius || 60)
+          plantImage.onload = () => {
+            ctx.drawImage(plantImage, x, y, radius || 60, radius || 60)
+          }
         }
       })
     }
@@ -99,12 +113,12 @@ const SeedPlanting: React.FC<SeedPlantingProps> = ({
     const y = event.clientY - rect.top
 
     // Plant the selected seed at the coordinates
-    // console.log(selectedSeed)
     if (selectedSeed) {
       const ctx = canvas.getContext('2d')
       if (ctx) {
         const sapling = new Image()
-        sapling.src = selectedSeed.imageUrl
+        // sapling.src = selectedSeed.imageUrl
+        sapling.src = 'images/topDownTree3.png'
 
         sapling.onload = () => {
           ctx.drawImage(
@@ -137,7 +151,7 @@ const SeedPlant = ({ seeds, imageSource }: Plant[]) => {
     // Implement logic to plant the selected seed at the specified coordinates
     // For simplicity, this example logs the seed and coordinates
 
-    const timestamp = new Date().toLocaleString()
+    const timestamp = new Date().getTime()
     console.log(
       'Planting seed:',
       selectedSeed,
