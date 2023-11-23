@@ -12,6 +12,7 @@ export async function up(knex) {
     table.integer('y')
     table.timestamp('timestamp')
     table.string('imgSrc')
+    table.bool('isMature')
     table.increments('uniqueId').primary()
   })
 }

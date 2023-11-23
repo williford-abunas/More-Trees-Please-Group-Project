@@ -23,7 +23,7 @@ const SeedInventory: React.FC<SeedInventoryProps> = ({
   onSelectSeed,
 }) => {
   return (
-    <div>
+    <div className="tester">
       <h3>Seed Inventory</h3>
 
       {seeds.map((seed, i) => (
@@ -148,6 +148,7 @@ const SeedPlant = ({ seeds, imageSource }: Plant[]) => {
       ...coordinate,
       imgSrc: imageSource,
       timestamp,
+      isMature: false,
     }
     setPlantStorage((prevStorage) => [plantedSeed])
 
