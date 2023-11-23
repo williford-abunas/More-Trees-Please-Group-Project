@@ -71,8 +71,8 @@ router.get('/allPlantedSeeds', async (req, res) => {
   }
 })
 
-router.patch('/updatePlantedSeed/:plantedSeed', async (req, res) => {
-  const plantedSeed = req.params.plantedSeed
+router.patch('/updatePlantedSeed', async (req, res) => {
+  const plantedSeed = req.body
   try {
     // const updatedSeed = {}
     const updatedSeed = await db.makeMature(plantedSeed)

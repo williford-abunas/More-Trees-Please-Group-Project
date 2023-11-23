@@ -5,6 +5,7 @@ import { addToStorage, getNativePlants, getPlantsByRegion } from '../api'
 import { Plant } from '../../models/plantsModel'
 import Growth from './Growth'
 import { getAllPlantedSeeds } from '../../server/db/db'
+import { checkGrowth } from './Growth'
 
 interface Seed {
   id: number
@@ -52,6 +53,7 @@ const SeedPlanting: React.FC<SeedPlantingProps> = ({
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
 
   useEffect(() => {
+    checkGrowth()
     const canvas = canvasRef.current
     if (!canvas) return
 
@@ -127,7 +129,7 @@ const SeedPlant = ({ seeds, imageSource }: Plant[]) => {
     // Implement logic to plant the selected seed at the specified coordinates
     // For simplicity, this example logs the seed and coordinates
 
-    const timestamp = new Date().toLocaleString()
+    const timestamp = new Date().getTime()
     console.log(
       'Planting seed:',
       selectedSeed,
@@ -187,28 +189,6 @@ const SeedPlant = ({ seeds, imageSource }: Plant[]) => {
 
     fetchData()
   }, [imageSource])
-
-  const ourSeed = getAllPlantedSeeds
-  //assign fullyGrown propery to relevant plant
-  function fullyGrown(seed) {
-    ;(seed.radius = 100), (seed.radius = 100)
-  }
-
-  //compare timestamps to current time
-  function checkAndScheduleGrowth(seed) {
-    const currentTime = new Date().getTime()
-    const timeDifference = currentTime - seed.timestamp
-
-    if (timeDifference >= 50000) {
-      //patch
-      fullyGrown(seed)
-    }
-    // else {
-    //   setTimeout(fullyGrown, timeDifference + 50000);
-    // }
-  }
-
-  checkAndScheduleGrowth(ourSeed)
 
   return (
     <div>

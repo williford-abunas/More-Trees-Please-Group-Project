@@ -40,7 +40,7 @@ export async function getAllPlantedSeeds() {
 
 export async function makeMature(plantedSeed) {
   const response = await request
-    .patch(rootUrl + `/updatePlantedSeed/${plantedSeed}`)
+    .patch(rootUrl + `/updatePlantedSeed`)
     .send(plantedSeed)
   return response.body
 }
