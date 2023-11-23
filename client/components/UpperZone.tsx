@@ -1,6 +1,7 @@
-export default function UpperZone({ onZoneClick }) {
+import SeedPlant from './SeedPlant'
+
+export default function UpperZone({ onZoneClick, seeds, imageSource }) {
   function handleOnClick() {
-    console.log('Home')
     {
       onZoneClick('home')
     }
@@ -10,7 +11,7 @@ export default function UpperZone({ onZoneClick }) {
       <button onClick={handleOnClick}> HOME </button>
       <div>
         {' '}
-        <img src="images/terrain01.jpg" />
+        <SeedPlant seeds={seeds.seeds} imageSource={imageSource} />
       </div>
     </>
   )

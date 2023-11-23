@@ -45,19 +45,19 @@ export default function Home({ onZoneClick }) {
   }
 
   function handleOnClickUpper() {
-    console.log('Upper')
+    // console.log('Upper')
     {
       onZoneClick('section1')
     }
   }
   function handleOnClickCentral() {
-    console.log('Central')
+    // console.log('Central')
     {
       onZoneClick('section2')
     }
   }
   function handleOnClickLower() {
-    console.log('Lower')
+    // console.log('Lower')
     {
       onZoneClick('section3')
     }

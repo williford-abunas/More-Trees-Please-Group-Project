@@ -9,3 +9,12 @@
   color: green;
   opacity: 10%;
 }
+
+.bird {
+  width: 100px
+}
+
+.tester button:nth-child(2){
+  display: none;
+}
+

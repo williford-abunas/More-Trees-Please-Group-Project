@@ -14,3 +14,24 @@ export async function getAllPlants(): Promise<Plant[]> {
 export async function getAllBirds(): Promise<Bird[]> {
   return await connection('birds').select()
 }
+
+export async function addPlants(plantData: any) {
+  return await connection('gameState').insert(plantData).returning('*')
+}
+
+export async function getPlantedSeedsByRegion(region: string) {
+  return await connection('gameState')
+    .select()
+    .where('imgSrc', 'images/' + region)
+}
+
+export async function makeMature(plantedSeed) {
+  return await connection('gameState')
+    .where('uniqueId', plantedSeed.uniqueId)
+    .update(plantedSeed)
+    .returning('*')
+}
+
+export async function getAllPlantedSeeds() {
+  return await connection('gameState').select()
+}

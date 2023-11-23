@@ -2,6 +2,7 @@ import express from 'express'
 import { JwtRequest } from '../auth0'
 
 import * as db from '../db/db'
+import { getRandomBird } from '../db/birdHelper'
 
 const router = express.Router()
 
@@ -34,6 +35,52 @@ router.get('/allBirds', async (req, res) => {
   } catch (error) {
     console.log(error)
     res.status(500).json({ message: `getAllBirds isn't working!` })
+  }
+})
+
+router.post('/addPlants', async (req, res) => {
+  const plantData = req.body
+  try {
+    const addedPlants = await db.addPlants(plantData)
+    res.json(addedPlants)
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({ message: `Add Plants is not working` })
+  }
+})
+
+router.get('/getPlantsByRegion/images/:region', async (req, res) => {
+  const region = req.params.region
+  try {
+    const plantsByRegion = await db.getPlantedSeedsByRegion(region)
+    res.json(plantsByRegion)
+  } catch (error) {
+    console.log(error)
+    res
+      .status(500)
+      .json({ message: `Get planted plants by region is not working` })
+  }
+})
+
+router.get('/allPlantedSeeds', async (req, res) => {
+  try {
+    const allPlantedSeeds = await db.getAllPlantedSeeds()
+    res.json(allPlantedSeeds)
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({ message: `getAllPlantedSeeds isn't working!` })
+  }
+})
+
+router.patch('/updatePlantedSeed', async (req, res) => {
+  const plantedSeed = req.body
+  try {
+    // const updatedSeed = {}
+    const updatedSeed = await db.makeMature(plantedSeed)
+    res.json(updatedSeed)
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({ message: `makeMature isn't working!` })
   }
 })
 
