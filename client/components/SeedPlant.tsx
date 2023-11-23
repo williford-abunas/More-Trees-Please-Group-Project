@@ -31,7 +31,6 @@ const SeedInventory: React.FC<SeedInventoryProps> = ({
     const filtered = seeds.filter(
       (seed) => seed.region == photo || seed.region == 0
     )
-    console.log('filtered seeds', filtered)
     return filtered
   }
 
@@ -117,7 +116,6 @@ const SeedPlanting: React.FC<SeedPlantingProps> = ({
       const ctx = canvas.getContext('2d')
       if (ctx) {
         const sapling = new Image()
-        // sapling.src = selectedSeed.imageUrl
         sapling.src = 'images/topDownTree3.png'
 
         sapling.onload = () => {
