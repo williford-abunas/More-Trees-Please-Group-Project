@@ -61,4 +61,26 @@ router.get('/getPlantsByRegion/images/:region', async (req, res) => {
   }
 })
 
+router.get('/allPlantedSeeds', async (req, res) => {
+  try {
+    const allPlantedSeeds = await db.getAllPlantedSeeds()
+    res.json(allPlantedSeeds)
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({ message: `getAllPlantedSeeds isn't working!` })
+  }
+})
+
+router.patch('/updatePlantedSeed', async (req, res) => {
+  const plantedSeed = req.body
+  try {
+    // const updatedSeed = {}
+    const updatedSeed = await db.makeMature(plantedSeed)
+    res.json(updatedSeed)
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({ message: `makeMature isn't working!` })
+  }
+})
+
 export default router

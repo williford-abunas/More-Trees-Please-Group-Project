@@ -3,6 +3,9 @@ import saplingImage from '../../images/top-tree-png-4131.png'
 import Header from './Header'
 import { addToStorage, getNativePlants, getPlantsByRegion } from '../api'
 import { Plant } from '../../models/plantsModel'
+import Growth from './Growth'
+import { getAllPlantedSeeds } from '../../server/db/db'
+import { checkGrowth } from './Growth'
 
 interface Seed {
   id: number
@@ -62,6 +65,7 @@ const SeedPlanting: React.FC<SeedPlantingProps> = ({
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
 
   useEffect(() => {
+    checkGrowth()
     const canvas = canvasRef.current
     if (!canvas) return
 
@@ -147,7 +151,7 @@ const SeedPlant = ({ seeds, imageSource }: Plant[]) => {
     // Implement logic to plant the selected seed at the specified coordinates
     // For simplicity, this example logs the seed and coordinates
 
-    const timestamp = new Date().toLocaleString()
+    const timestamp = new Date().getTime()
     console.log(
       'Planting seed:',
       selectedSeed,
