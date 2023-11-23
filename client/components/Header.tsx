@@ -6,6 +6,7 @@ import SeedPlant from './SeedPlant'
 import CentralZone from './CentralZone'
 import Wrapper from './Wrapper'
 import Bird from './Bird'
+import { EventLogger } from './EventLogger'
 
 const Header = () => {
   const [inv, setInv] = useState([
@@ -43,7 +44,7 @@ const Header = () => {
   useEffect(() => {
     const intervalId = setInterval(() => {
       populateInventory()
-    }, 5000)
+    }, 8000)
     // ^ change timer to fit game mechanics
     return () => clearInterval(intervalId)
   }, [])
@@ -56,6 +57,7 @@ const Header = () => {
         forest! May this land, green and lush, be a stage befitting birdsong,
         and let this treasure be carried yonder.
       </p>
+      <EventLogger />
       Seeds:
       {inv.map((item, i) => (
         <span key={i}>
