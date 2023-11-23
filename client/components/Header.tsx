@@ -51,7 +51,9 @@ const Header = () => {
 
   return (
     <div className="header-wrapper">
-      <h1>More Trees Please!</h1>
+      <div className="pageTitle">
+        <h1>More Trees Please!</h1>
+      </div>
       <p>
         Look forth! An empty land, a barren land. Let us regrow the native
         forest! May this land, green and lush, be a stage befitting birdsong,
