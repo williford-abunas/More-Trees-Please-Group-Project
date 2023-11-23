@@ -52,13 +52,10 @@ const Header = () => {
   return (
     <div className="header-wrapper">
       <div className="pageTitle">
+        {/* <button onClick={handleClickNav}> */}
         <h1>More Trees Please!</h1>
+        {/* </button> */}
       </div>
-      <p>
-        Look forth! An empty land, a barren land. Let us regrow the native
-        forest! May this land, green and lush, be a stage befitting birdsong,
-        and let this treasure be carried yonder.
-      </p>
       <Bird />
       <Wrapper seeds={inv} />
     </div>

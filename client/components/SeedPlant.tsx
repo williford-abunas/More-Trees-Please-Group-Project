@@ -41,7 +41,11 @@ const SeedInventory: React.FC<SeedInventoryProps> = ({
       <h3>Seed Inventory</h3>
 
       {seedsForHere.map((seed, i) => (
-        <button className="button" key={i} onClick={() => onSelectSeed(seed)}>
+        <button
+          className="seed-button"
+          key={i}
+          onClick={() => onSelectSeed(seed)}
+        >
           {seed.name}
         </button>
       ))}
