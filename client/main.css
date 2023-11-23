@@ -22,6 +22,44 @@
 
 }
 
+.seedList button:nth-child(2){
+  display: none;
+}
+
+.seedList {
+  position:absolute;
+  left:0px; 
+  top:400px;
+  max-width: 40px;
+  justify-items: left;
+}
+
+.button {
+  background-color: #04AA6D; 
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 100%;
+}
+
+button:hover {
+  background-color:#00633f
+}
+
+.home {
+  margin: 50px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  overflow: hidden;
+  flex-direction: column;
+}
+
 .tester button:nth-child(2) {
   display: none;
 }
@@ -41,3 +79,4 @@
 .birdsEvents {
   color: rgb(112, 0, 156);
 }
+

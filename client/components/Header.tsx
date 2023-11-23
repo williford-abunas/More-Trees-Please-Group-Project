@@ -57,13 +57,7 @@ const Header = () => {
         forest! May this land, green and lush, be a stage befitting birdsong,
         and let this treasure be carried yonder.
       </p>
-      Seeds:
-      {inv.map((item, i) => (
-        <span key={i}>
-          {' '}
-          {item?.name} ({item?.region})|{' '}
-        </span>
-      ))}
+      <EventLogger />
       <Bird />
       <Wrapper seeds={inv} />
     </div>
