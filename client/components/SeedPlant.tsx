@@ -37,11 +37,11 @@ const SeedInventory: React.FC<SeedInventoryProps> = ({
   const seedsForHere = filterSeeds(seeds, zoneImage)
 
   return (
-    <div className="tester">
+    <div className="seedList">
       <h3>Seed Inventory</h3>
 
       {seedsForHere.map((seed, i) => (
-        <button key={i} onClick={() => onSelectSeed(seed)}>
+        <button className="button" key={i} onClick={() => onSelectSeed(seed)}>
           {seed.name}
         </button>
       ))}
@@ -133,7 +133,7 @@ const SeedPlanting: React.FC<SeedPlantingProps> = ({
     }
   }
 
-  return <canvas ref={canvasRef} onClick={handlePlantSeed} />
+  return <canvas className="img" ref={canvasRef} onClick={handlePlantSeed} />
 }
 
 const SeedPlant = ({ seeds, imageSource }: Plant[]) => {
