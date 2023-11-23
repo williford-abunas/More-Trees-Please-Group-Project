@@ -11,10 +11,25 @@
 }
 
 .bird {
-  width: 100px
+  width: 100px;
 }
 
-.tester button:nth-child(2){
+.tester button:nth-child(2) {
   display: none;
 }
 
+.events:hover {
+  background-color: mediumspringgreen;
+}
+
+.events > ul {
+  overflow-y: scroll;
+  height: 200px;
+  background-color: darkseagreen;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.birdsEvents {
+  color: rgb(112, 0, 156);
+}

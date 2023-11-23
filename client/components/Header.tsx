@@ -57,7 +57,6 @@ const Header = () => {
         forest! May this land, green and lush, be a stage befitting birdsong,
         and let this treasure be carried yonder.
       </p>
-      <EventLogger />
       Seeds:
       {inv.map((item, i) => (
         <span key={i}>
