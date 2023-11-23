@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { getAllBirds, getAllPlantedSeeds } from '../api'
 import { Bird as BirdProps } from '../../models/birdsModel'
+import { EventLogger } from './EventLogger'
 
 const Bird: React.FC = () => {
   const [bird, setBird] = useState<BirdProps | null>(null)
@@ -73,19 +74,23 @@ const Bird: React.FC = () => {
 
   return (
     <>
+      <EventLogger birdArray={{ birdArray }} />
       <div>
         <p>Current Birds Sighted:</p>
-
-        {birdArray.map((b, index) => (
-          <img
-            className="bird"
-            key={index}
-            src={`../images/${b.name.toLowerCase()}.png`}
-            alt="bird-img"
-          />
-        ))}
+        <div className="bird-images">
+          {birdArray.map((b, index) => (
+            <img
+              className="bird"
+              key={index}
+              src={`../images/${b.name.toLowerCase()}.png`}
+              alt="bird-img"
+              title={b.name}
+            />
+          ))}
+        </div>
       </div>
     </>
   )
 }
+
 export default Bird
