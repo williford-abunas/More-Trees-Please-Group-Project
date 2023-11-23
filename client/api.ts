@@ -28,13 +28,19 @@ export async function addToStorage(plantData) {
   return response.body
 }
 
-export async function makeMature() {
-  const response = await await await request
-    .patch(rootUrl + '/addplants')
-    .send()
-}
-
 export async function getPlantsByRegion(region: string) {
   const res = await request.get(rootUrl + `/getPlantsByRegion/images/${region}`)
   return res.body
+}
+
+export async function getAllPlantedSeeds() {
+  const response = await request.get(rootUrl + '/allPlantedSeeds')
+  return response.body
+}
+
+export async function makeMature(plantedSeed) {
+  const response = await request
+    .patch(rootUrl + `/updatePlantedSeed/${plantedSeed}`)
+    .send(plantedSeed)
+  return response.body
 }

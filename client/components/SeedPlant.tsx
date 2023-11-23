@@ -3,6 +3,8 @@ import saplingImage from '../../images/top-tree-png-4131.png'
 import Header from './Header'
 import { addToStorage, getNativePlants, getPlantsByRegion } from '../api'
 import { Plant } from '../../models/plantsModel'
+import Growth from './Growth'
+import { getAllPlantedSeeds } from '../../server/db/db'
 
 interface Seed {
   id: number
@@ -185,6 +187,28 @@ const SeedPlant = ({ seeds, imageSource }: Plant[]) => {
 
     fetchData()
   }, [imageSource])
+
+  const ourSeed = getAllPlantedSeeds
+  //assign fullyGrown propery to relevant plant
+  function fullyGrown(seed) {
+    ;(seed.radius = 100), (seed.radius = 100)
+  }
+
+  //compare timestamps to current time
+  function checkAndScheduleGrowth(seed) {
+    const currentTime = new Date().getTime()
+    const timeDifference = currentTime - seed.timestamp
+
+    if (timeDifference >= 50000) {
+      //patch
+      fullyGrown(seed)
+    }
+    // else {
+    //   setTimeout(fullyGrown, timeDifference + 50000);
+    // }
+  }
+
+  checkAndScheduleGrowth(ourSeed)
 
   return (
     <div>

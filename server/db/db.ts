@@ -25,6 +25,12 @@ export async function getPlantedSeedsByRegion(region: string) {
     .where('imgSrc', 'images/' + region)
 }
 
-export async function makeMature() {
-  return await connection('gamestate').update(isFruiting)
+export async function makeMature(plantedSeed: any): Promise<number> {
+  return await connection('gameState')
+    .where({ id: plantedSeed.id })
+    .update({ isMature: true })
+}
+
+export async function getAllPlantedSeeds() {
+  return await connection('gameState').select({ isMature: false })
 }
