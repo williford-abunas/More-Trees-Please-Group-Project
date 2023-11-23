@@ -27,3 +27,4 @@ export async function addToStorage(plantData) {
   console.log('Api client response.body= ', response.body)
   return response.body
 }
+

@@ -2,6 +2,7 @@ import express from 'express'
 import { JwtRequest } from '../auth0'
 
 import * as db from '../db/db'
+import { getRandomBird } from '../db/birdHelper'
 
 const router = express.Router()
 
@@ -47,5 +48,17 @@ router.post('/addPlants', async (req, res) => {
     res.status(500).json({ message: `Add Plants is not working` })
   }
 })
+
+//Random Bird
+// router.get('/randomBird', async (req, res) => {
+//   try {
+//     const randomBird = await getRandomBird()
+
+//     res.json(randomBird)
+//   } catch (error) {
+//     console.log(error)
+//     res.status(500).json({ message: `Cannot get random bird` })
+//   }
+// })
 
 export default router

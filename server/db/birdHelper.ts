@@ -20,7 +20,7 @@ export async function getRandomBird(): Promise<Bird | null> {
       .offset(randomIndex)
       .first()
 
-    return randomBird as Bird
+    return randomBird
   } else {
     return null // No birds in the database
   }
