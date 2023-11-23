@@ -40,7 +40,7 @@ const Bird: React.FC = () => {
       <div>{bird && <p>New Bird Sighted: {bird.name}</p>}</div>
       <div>
         <p>Current Birds Sighted:</p>
-
+    <div className="bird-images">
         {birdArray.map((b, index) => (
           <img
             className="bird"
@@ -49,6 +49,7 @@ const Bird: React.FC = () => {
             alt="bird-img"
           />
         ))}
+        </div>
       </div>
     </>
   )
