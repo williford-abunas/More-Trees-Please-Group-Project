@@ -14,7 +14,6 @@ export default function CentralZone({ onZoneClick, seeds, imageSource }) {
       <button onClick={handleOnClick}> HOME </button>
       <div>
         {' '}
-        {/* <img src="images/terrain02.jpg" /> */}
         <SeedPlant seeds={seeds.seeds} imageSource={imageSource} />
       </div>
     </>

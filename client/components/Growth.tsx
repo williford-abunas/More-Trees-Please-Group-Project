@@ -6,6 +6,7 @@ export async function checkGrowth() {
 
   seedArray.forEach((seed) => {
     const currentTime = new Date().getTime()
+
     const timeDifference = currentTime - seed.timestamp
 
     if (timeDifference >= 15000) {
