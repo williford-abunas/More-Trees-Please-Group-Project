@@ -33,13 +33,20 @@ const Bird: React.FC = () => {
         '>=',
         Math.floor(totalBirdsSpawned)
       )
-
-      if (Math.floor(matureCount / 5) > Math.floor(totalBirdsSpawned)) {
+      function getRandomNumber() {
+        return Math.floor(Math.random() * 6) + 5
+      }
+      const randomNumber = getRandomNumber()
+      if (
+        Math.floor(matureCount / randomNumber) > Math.floor(totalBirdsSpawned)
+      ) {
         console.log('spawn birds is being spawned')
 
         for (
           let i = 0;
-          i < Math.floor(matureCount / 5) - Math.floor(totalBirdsSpawned);
+          i <
+          Math.floor(matureCount / randomNumber) -
+            Math.floor(totalBirdsSpawned);
           i++
         ) {
           updateBirdArray()
