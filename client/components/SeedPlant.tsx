@@ -76,7 +76,7 @@ const SeedPlanting: React.FC<SeedPlantingProps> = ({
 
     image.onload = () => {
       canvas.width = window.innerWidth
-      canvas.height = image.height
+      canvas.height = window.innerHeight
 
       // Draw the image on the canvas
       ctx.drawImage(image, 0, 0, image.width, image.height)
