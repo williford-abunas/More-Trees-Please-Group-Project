@@ -33,7 +33,6 @@ const Bird: React.FC = () => {
         Math.floor(totalBirdsSpawned)
       )
 
-      // setTotalBirdsSpawned((prev) => prev + matureCount)
       if (Math.floor(matureCount / 5) > Math.floor(totalBirdsSpawned)) {
         console.log('spawn birds is being spawned')
 
@@ -42,7 +41,6 @@ const Bird: React.FC = () => {
           i < Math.floor(matureCount / 5) - Math.floor(totalBirdsSpawned);
           i++
         ) {
-          // await fetchRandomBird()
           updateBirdArray()
           console.log(birdArray)
           setTotalBirdsSpawned((prev) => prev + 1)
@@ -56,12 +54,8 @@ const Bird: React.FC = () => {
     async function updateBirdArray() {
       const newBird = await fetchRandomBird()
       setBird(newBird)
-      // setBirdArray((prev) => (newBird ? [...prev, newBird] : prev))
       setBirdArray((prev) => [...prev, newBird])
     }
-
-    // Fetch a random bird initially
-    // fetchRandomBird().then((initialBird) => setBird(initialBird))
 
     // // Fetch a random bird every 20 seconds and update the array
     const intervalId = setInterval(() => {
@@ -79,7 +73,6 @@ const Bird: React.FC = () => {
 
   return (
     <>
-      {/* <div>{bird && <p>New Bird Sighted: {bird.name}</p>}</div> */}
       <div>
         <p>Current Birds Sighted:</p>
 
@@ -95,5 +88,4 @@ const Bird: React.FC = () => {
     </>
   )
 }
-// images/birb.png
 export default Bird

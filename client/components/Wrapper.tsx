@@ -8,7 +8,6 @@ import Header from './Header'
 
 export default function Wrapper({ seeds }) {
   const [selected, setSelected] = useState('home')
-  // console.log({ seeds })
   const handleZoneClick = (zone) => {
     setSelected(zone)
   }
@@ -45,16 +44,4 @@ export default function Wrapper({ seeds }) {
   }
 
   return <>{renderComponent()}</>
-
-  // if (showUpper == true) {
-  //   return <UpperZone />
-  // } else if (showCentral == true) {
-  //   return <CentralZone />
-  // } else if (showLower == true) {
-  //   return <LowerZone />
-  // } else if (showHome == true) {
-  //   return <Home />
-  // } else {
-  //   return <h1>Oopsie Whoopsie! Website is sad :(</h1>
-  // }
 }

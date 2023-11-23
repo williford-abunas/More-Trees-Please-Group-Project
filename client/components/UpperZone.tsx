@@ -2,7 +2,6 @@ import SeedPlant from './SeedPlant'
 
 export default function UpperZone({ onZoneClick, seeds, imageSource }) {
   function handleOnClick() {
-    // console.log('Home')
     {
       onZoneClick('home')
     }
