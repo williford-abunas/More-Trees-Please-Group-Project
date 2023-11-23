@@ -5,6 +5,7 @@ import { getNativePlants } from '../api'
 import SeedPlant from './SeedPlant'
 import CentralZone from './CentralZone'
 import Wrapper from './Wrapper'
+import Bird from './Bird'
 
 const Header = () => {
   const [inv, setInv] = useState([
@@ -62,6 +63,7 @@ const Header = () => {
           {item?.name} ({item?.region})|{' '}
         </span>
       ))}
+      <Bird />
       <Wrapper seeds={inv} />
     </div>
   )

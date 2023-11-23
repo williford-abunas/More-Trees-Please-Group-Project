@@ -2,6 +2,7 @@ import express from 'express'
 import { JwtRequest } from '../auth0'
 
 import * as db from '../db/db'
+import { getRandomBird } from '../db/birdHelper'
 
 const router = express.Router()
 
