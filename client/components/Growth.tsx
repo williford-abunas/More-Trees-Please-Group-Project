@@ -3,7 +3,7 @@ export default function Growth() {
 
   //assign fullyGrown propery to relevant plant
   function fullyGrown(seed) {
-    seed.radius = 100, seed.radius = 100
+    ;(seed.radius = 100), (seed.radius = 100)
   }
 
   //compare timestamps to current time

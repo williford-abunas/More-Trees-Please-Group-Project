@@ -29,5 +29,12 @@ export async function addToStorage(plantData) {
 }
 
 export async function makeMature() {
-  const response = await (await request.patch(rottUrl + '/addplants')).setEncoding()
+  const response = await await await request
+    .patch(rootUrl + '/addplants')
+    .send()
+}
+
+export async function getPlantsByRegion(region: string) {
+  const res = await request.get(rootUrl + `/getPlantsByRegion/images/${region}`)
+  return res.body
 }
