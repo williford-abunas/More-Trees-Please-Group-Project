@@ -27,3 +27,8 @@ export async function addToStorage(plantData) {
   console.log('Api client response.body= ', response.body)
   return response.body
 }
+
+export async function getPlantsByRegion(region: string) {
+  const res = await request.get(rootUrl + `/getPlantsByRegion/images/${region}`)
+  return res.body
+}
