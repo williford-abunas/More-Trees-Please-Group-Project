@@ -33,12 +33,18 @@
 }
 
 .seedList {
-
-  right:10%; 
-  top: 0;
-  max-width: 40px;
+  position: fixed;
+  background-color: darkgreen;
+  right:0; 
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 10px;
+  border: 1px solid black;
+  height: 100%;
+  overflow:auto;
+  max-width: 10%;
   justify-items: right;
-  position:absolute;
+  z-index: 4;
 }
 
 .button {
