@@ -75,7 +75,7 @@ const SeedPlanting: React.FC<SeedPlantingProps> = ({
     image.src = imageSrc
 
     image.onload = () => {
-      canvas.width = image.width
+      canvas.width = window.innerWidth
       canvas.height = image.height
 
       // Draw the image on the canvas
@@ -108,8 +108,8 @@ const SeedPlanting: React.FC<SeedPlantingProps> = ({
     const canvas = canvasRef.current
     if (!canvas) return
     const rect = canvas.getBoundingClientRect()
-    const x = event.clientX - rect.left
-    const y = event.clientY - rect.top
+    const x = event.nativeEvent.offsetX
+    const y = event.nativeEvent.offsetY
 
     // Plant the selected seed at the coordinates
     if (selectedSeed) {
