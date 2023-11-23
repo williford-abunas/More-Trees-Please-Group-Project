@@ -77,15 +77,17 @@ const Bird: React.FC = () => {
       <EventLogger birdArray={{ birdArray }} />
       <div>
         <p>Current Birds Sighted:</p>
-
-        {birdArray.map((b, index) => (
-          <img
-            className="bird"
-            key={index}
-            src={`../images/${b.name.toLowerCase()}.png`}
-            alt="bird-img"
-          />
-        ))}
+        <div className="bird-images">
+          {birdArray.map((b, index) => (
+            <img
+              className="bird"
+              key={index}
+              src={`../images/${b.name.toLowerCase()}.png`}
+              alt="bird-img"
+              title={b.name}
+            />
+          ))}
+        </div>
       </div>
     </>
   )
