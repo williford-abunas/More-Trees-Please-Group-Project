@@ -114,8 +114,6 @@ const SeedPlanting: React.FC<SeedPlantingProps> = ({
 
 const SeedPlant = ({ seeds, imageSource }: Plant[]) => {
   const [plantStorage, setPlantStorage] = useState([])
-  // const seeds = plants.filter((plant: Plant) => plant.region === 0)
-  // console.log(seeds)
   const [seedsPlantedHere, setSeedsPlantedHere] = useState()
   const [selectedSeed, setSelectedSeed] = useState<Seed | null>(null)
 
@@ -137,10 +135,11 @@ const SeedPlant = ({ seeds, imageSource }: Plant[]) => {
       timestamp
     )
 
-    // console.log('selectedSeed:', selectedSeed)
-    const indextoDelete = seeds.findIndex((seed) => {
-      return seed.name === selectedSeed?.name
-    })
+    const indextoDelete = seeds.findIndex(
+      (seed: { name: string | undefined }) => {
+        return seed.name === selectedSeed?.name
+      }
+    )
 
     seeds.splice(indextoDelete, 1)
 
@@ -166,14 +165,12 @@ const SeedPlant = ({ seeds, imageSource }: Plant[]) => {
       await addToStorage(plantStorage)
     }
     addingPlants()
-  }, [plantStorage])
+  }, [imageSource, plantStorage])
 
   // Rendering planted plants when you return to area
 
-  async function getPlantsFromRoute(region) {
-    // console.log(region.imageSource)
+  async function getPlantsFromRoute(region: { imageSource: any }) {
     const strSplit = region.imageSource.split('/')
-    // console.log(strSplit)
 
     const seedsPlanted = await getPlantsByRegion(strSplit[1])
     setSeedsPlantedHere(seedsPlanted)
