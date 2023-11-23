@@ -21,12 +21,24 @@ interface SeedInventoryProps {
 const SeedInventory: React.FC<SeedInventoryProps> = ({
   seeds,
   onSelectSeed,
+  zoneImage,
 }) => {
+  function filterSeeds(seeds, picture) {
+    const photo = picture.split('')[15]
+    const filtered = seeds.filter(
+      (seed) => seed.region == photo || seed.region == 0
+    )
+    console.log('filtered seeds', filtered)
+    return filtered
+  }
+
+  const seedsForHere = filterSeeds(seeds, zoneImage)
+
   return (
     <div className="tester">
       <h3>Seed Inventory</h3>
 
-      {seeds.map((seed, i) => (
+      {seedsForHere.map((seed, i) => (
         <button key={i} onClick={() => onSelectSeed(seed)}>
           {seed.name}
         </button>
@@ -188,7 +200,11 @@ const SeedPlant = ({ seeds, imageSource }: Plant[]) => {
 
   return (
     <div>
-      <SeedInventory seeds={seeds} onSelectSeed={handleSelectSeed} />
+      <SeedInventory
+        seeds={seeds}
+        onSelectSeed={handleSelectSeed}
+        zoneImage={imageSource}
+      />
       <SeedPlanting
         imageSrc={imageSource}
         selectedSeed={selectedSeed}
