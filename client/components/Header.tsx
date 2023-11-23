@@ -58,13 +58,6 @@ const Header = () => {
         and let this treasure be carried yonder.
       </p>
       <EventLogger />
-      {/* Seeds:
-      {inv.map((item, i) => (
-        <span key={i}>
-          {' '}
-          {item?.name} ({item?.region})|{' '}
-        </span>
-      ))} */}
       <Bird />
       <Wrapper seeds={inv} />
     </div>
