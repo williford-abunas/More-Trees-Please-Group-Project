@@ -1,3 +1,82 @@
+/* CSS Variables */
+
+:root {
+  --primary-green: #00633f;
+  --light-green: #04AA6D;
+  --shadow-green: #043d27;
+  --yellow: #f5dd04;
+}
+
+
+@font-face {
+  font-family: 'super-nought';
+  src: url('./fonts/Super\ Nought\ Personal\ Use.ttf');
+}
+
+
+@font-face {
+  font-family: 'retro-cool';
+  src: url('./fonts/RetroCool-Regular.otf');
+}
+
+h1 {
+  font-family: 'retro-cool';
+  font-size: 4em;
+  /* font-kerning: calc(); */
+  color: var(--yellow);
+  background: var(--primary-green);
+  width: fit-content;
+  padding: 20px;
+  padding-left: 40px;
+  padding-right: 40px;
+  border-radius: 50px;
+  border: solid 10px;
+  border-color: var(--yellow);
+  text-shadow: 8px 8px var(--shadow-green);
+  
+}
+
+
+.pageTitle {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border-radius: 50px;
+  border: solid 10px;
+  border-color: #f5dd04; */
+
+}
+
+ @-webkit-keyframes bird {
+  0% {
+    -webkit-transform: scale(1) rotate3d(1, 1, 0, 0deg);
+            transform: scale(1) rotate3d(1, 1, 0, 0deg);
+  }
+  50% {
+    -webkit-transform: scale(2.5) rotate3d(1, 1, 0, 90deg);
+            transform: scale(2.5) rotate3d(1, 1, 0, 90deg);
+  }
+  100% {
+    -webkit-transform: scale(1) rotate3d(1, 1, 0, 180deg);
+            transform: scale(1) rotate3d(1, 1, 0, 180deg);
+  }
+}
+@keyframes bird {
+  0% {
+    -webkit-transform: scale(1) rotate3d(1, 1, 0, 0deg);
+            transform: scale(1) rotate3d(1, 1, 0, 0deg);
+  }
+  50% {
+    -webkit-transform: scale(2.5) rotate3d(1, 1, 0, 90deg);
+            transform: scale(2.5) rotate3d(1, 1, 0, 90deg);
+  }
+  100% {
+    -webkit-transform: scale(1) rotate3d(1, 1, 0, 180deg);
+            transform: scale(1) rotate3d(1, 1, 0, 180deg);
+  }
+}
+
 .img {
   padding: 0;
   border: 0;
@@ -17,10 +96,14 @@
   opacity: 10%;
 }
 .bird {
-
+  padding: 20px;
+  height: 100px;
   width: 100px;
-
+border-radius: 100px;
+	-webkit-animation: bird 2s linear 3000ms infinite alternate-reverse both;
+	        animation: bird 2s linear 3000ms infinite alternate-reverse both;
 }
+
 
 .bird-images{
   overflow: auto;
