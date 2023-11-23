@@ -27,3 +27,7 @@ export async function addToStorage(plantData) {
   console.log('Api client response.body= ', response.body)
   return response.body
 }
+
+export async function makeMature() {
+  const response = await (await request.patch(rottUrl + '/addplants')).setEncoding()
+}
