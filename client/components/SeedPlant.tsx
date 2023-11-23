@@ -31,7 +31,7 @@ const SeedInventory: React.FC<SeedInventoryProps> = ({
     const filtered = seeds.filter(
       (seed) => seed.region == photo || seed.region == 0
     )
-    console.log('filtered seeds', filtered)
+    // console.log('filtered seeds', filtered)
     return filtered
   }
 
