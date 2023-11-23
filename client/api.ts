@@ -28,10 +28,7 @@ export async function addToStorage(plantData) {
   return response.body
 }
 
-<<<<<<< HEAD
-=======
 export async function getPlantsByRegion(region: string) {
   const res = await request.get(rootUrl + `/getPlantsByRegion/images/${region}`)
   return res.body
 }
->>>>>>> 74765ca1391c6df42d200ce7af264bea88079d69
