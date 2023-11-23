@@ -133,7 +133,7 @@ const SeedPlanting: React.FC<SeedPlantingProps> = ({
     }
   }
 
-  return <canvas className="img" ref={canvasRef} onClick={handlePlantSeed} />
+  return <canvas className="canvas" ref={canvasRef} onClick={handlePlantSeed} />
 }
 
 const SeedPlant = ({ seeds, imageSource }: Plant[]) => {

@@ -1,15 +1,21 @@
 .img {
-  margin: 0;
+  padding: 0;
   border: 0;
   display: block;
   width: 100%;
+
+}
+.canvas {
+  width: 100%;
+  position: absolute;
+  display: flex;
+  flex-direction: column
 }
 
 .hoverColor {
   color: green;
   opacity: 10%;
 }
-
 .bird {
 
   width: 100px;
@@ -27,11 +33,12 @@
 }
 
 .seedList {
-  position:absolute;
-  left:0px; 
-  top:400px;
+
+  right:10%; 
+  top: 0;
   max-width: 40px;
-  justify-items: left;
+  justify-items: right;
+  position:absolute;
 }
 
 .button {

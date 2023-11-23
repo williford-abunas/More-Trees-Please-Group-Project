@@ -76,7 +76,7 @@ const Bird: React.FC = () => {
     <>
       <EventLogger birdArray={{ birdArray }} />
       <div>
-        <p>Current Birds Sighted:</p>
+        <p>Birds Spawned:</p>
         <div className="bird-images">
           {birdArray.map((b, index) => (
             <img
