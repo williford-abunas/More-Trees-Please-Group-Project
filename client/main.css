@@ -9,3 +9,8 @@
   color: green;
   opacity: 10%;
 }
+
+.tester button:nth-child(2){
+  display: none;
+}
+
