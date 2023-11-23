@@ -75,15 +75,16 @@ const Bird: React.FC = () => {
     <>
       <div>
         <p>Current Birds Sighted:</p>
-    <div className="bird-images">
-        {birdArray.map((b, index) => (
-          <img
-            className="bird"
-            key={index}
-            src={`../images/${b.name.toLowerCase()}.png`}
-            alt="bird-img"
-          />
-        ))}
+        <div className="bird-images">
+          {birdArray.map((b, index) => (
+            <img
+              className="bird"
+              key={index}
+              src={`../images/${b.name.toLowerCase()}.png`}
+              alt="bird-img"
+              title={b.name}
+            />
+          ))}
         </div>
       </div>
     </>
