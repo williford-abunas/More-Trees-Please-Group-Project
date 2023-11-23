@@ -25,7 +25,7 @@ const Bird: React.FC = () => {
     fetchRandomBird().then((initialBird) => setBird(initialBird))
 
     // Fetch a random bird every 20 seconds and update the array
-    const intervalId = setInterval(updateBirdArray, 20000)
+    const intervalId = setInterval(updateBirdArray, 5000)
 
     // Clean up the interval when the component is unmounted
     return () => clearInterval(intervalId)
@@ -42,14 +42,16 @@ const Bird: React.FC = () => {
         <p>Current Birds Sighted:</p>
 
         {birdArray.map((b, index) => (
-          <span key={index}>
-            {b.name}
-            <span> | </span>
-          </span>
+          <img
+            className="bird"
+            key={index}
+            src={`../images/${b.name.toLowerCase()}.png`}
+            alt="bird-img"
+          />
         ))}
       </div>
     </>
   )
 }
-
+// images/birb.png
 export default Bird
