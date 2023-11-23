@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { getAllBirds, getAllPlantedSeeds } from '../api'
 import { Bird as BirdProps } from '../../models/birdsModel'
+import { EventLogger } from './EventLogger'
 
 const Bird: React.FC = () => {
   const [bird, setBird] = useState<BirdProps | null>(null)
@@ -73,6 +74,7 @@ const Bird: React.FC = () => {
 
   return (
     <>
+      <EventLogger birdArray={{ birdArray }} />
       <div>
         <p>Current Birds Sighted:</p>
         <div className="bird-images">
@@ -90,4 +92,5 @@ const Bird: React.FC = () => {
     </>
   )
 }
+
 export default Bird
