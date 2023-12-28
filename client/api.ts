@@ -1,20 +1,23 @@
 import request from 'superagent'
 
-import { Bird } from '../models/birdsModel.ts'
-import { Plant } from '../models/plantsModel.ts'
+import { Bird } from '../models/birdsModel'
+import { Plant } from '../models/plantsModel'
 
 const rootUrl = '/api/v1'
 
-// function logError(err: Error) {
-//   console.log(err)
-//   if (err.message === 'Username Taken') {
-//     throw new Error('Username already taken - please choose another')
-//   } else if (err.message === 'Forbidden') {
-//     throw new Error(
-//       'Only the user who added the fruit may update and delete it'
-//     )
-//   } else {
-//     console.error('Error consuming the API (in client/api.js):', err.message)
-//     throw err
-//   }
-// }
+//Plants API
+export async function getNativePlants() {
+  const response = await request.get(rootUrl + '/plants')
+  return response.body as Plant[]
+}
+
+export async function getAllPlants() {
+  const response = await request.get(rootUrl + '/allPlants')
+  return response.body as Plant[]
+}
+
+// Birds API
+export async function getAllBirds() {
+  const response = await request.get(rootUrl + '/allBirds')
+  return response.body as Bird[]
+}

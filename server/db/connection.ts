@@ -1,5 +1,5 @@
-import knexFile from './knexfile.js'
 import knex from 'knex'
+import knexFile from './knexfile.js'
 
 type Environment = 'production' | 'test' | 'development'
 
