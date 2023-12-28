@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-export default function Home() {
+export default function Home({ onZoneClick }) {
   // function mouseHover() {
   //   document
   //     .getElementsByClassName('upper')[0]
@@ -11,6 +11,7 @@ export default function Home() {
   const [isHoveredUpper, setIsHoveredUpper] = useState(false)
   const [isHoveredCentral, setIsHoveredCentral] = useState(false)
   const [isHoveredLower, setIsHoveredLower] = useState(false)
+
   const handleMouseEnterUpper = () => {
     setIsHoveredUpper(true)
   }
@@ -33,21 +34,37 @@ export default function Home() {
   }
 
   const hoverStyleUpper = {
-    color: isHoveredUpper ? 'green' : null,
-    opacity: isHoveredUpper ? '10%' : null,
+    opacity: isHoveredUpper ? '100%' : '80%',
   }
 
   const hoverStyleCentral = {
-    color: isHoveredCentral ? 'green' : null,
-    opacity: isHoveredCentral ? '10%' : null,
+    opacity: isHoveredCentral ? '100%' : '80%',
   }
   const hoverStyleLower = {
-    color: isHoveredLower ? 'green' : null,
-    opacity: isHoveredLower ? '10%' : null,
+    opacity: isHoveredLower ? '100%' : '80%',
+  }
+
+  function handleOnClickUpper() {
+    // console.log('Upper')
+    {
+      onZoneClick('section1')
+    }
+  }
+  function handleOnClickCentral() {
+    // console.log('Central')
+    {
+      onZoneClick('section2')
+    }
+  }
+  function handleOnClickLower() {
+    // console.log('Lower')
+    {
+      onZoneClick('section3')
+    }
   }
 
   return (
-    <div>
+    <div className="home">
       <div
         style={hoverStyleUpper}
         onMouseEnter={handleMouseEnterUpper}
@@ -55,6 +72,7 @@ export default function Home() {
         className="upper"
       >
         <img
+          onClick={handleOnClickUpper}
           className="img"
           src="./images/New Zealand Sliced/01_upper.jpg"
           alt="the upper half of the north island of new zealand"
@@ -67,6 +85,7 @@ export default function Home() {
         className="central"
       >
         <img
+          onClick={handleOnClickCentral}
           className="img"
           src="./images/New Zealand Sliced/02_central.jpg"
           alt="the central area of new zealand, combining the lower north island and the upper south island"
@@ -79,6 +98,7 @@ export default function Home() {
         className="lower"
       >
         <img
+          onClick={handleOnClickLower}
           className="img"
           src="./images/New Zealand Sliced/03_lower.jpg"
           alt="the lower half of the south island of New Zealand"

@@ -7,4 +7,5 @@ export interface Plant {
   maxHeight: number
   native: boolean
   imgUrl: string
+  
 }

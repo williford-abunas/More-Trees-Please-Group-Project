@@ -1,6 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react'
 import saplingImage from '../../images/top-tree-png-4131.png'
 import Header from './Header'
+import { addToStorage, getNativePlants, getPlantsByRegion } from '../api'
+import { Plant } from '../../models/plantsModel'
+import Growth from './Growth'
+import { getAllPlantedSeeds } from '../../server/db/db'
+import { checkGrowth } from './Growth'
 
 interface Seed {
   id: number
@@ -19,13 +24,28 @@ interface SeedInventoryProps {
 const SeedInventory: React.FC<SeedInventoryProps> = ({
   seeds,
   onSelectSeed,
+  zoneImage,
 }) => {
+  function filterSeeds(seeds, picture) {
+    const photo = picture.split('')[15]
+    const filtered = seeds.filter(
+      (seed) => seed.region == photo || seed.region == 0
+    )
+    return filtered
+  }
+
+  const seedsForHere = filterSeeds(seeds, zoneImage)
+
   return (
-    <div>
+    <div className="seedList">
       <h3>Seed Inventory</h3>
 
-      {seeds.map((seed) => (
-        <button key={seed.id} onClick={() => onSelectSeed(seed)}>
+      {seedsForHere.map((seed, i) => (
+        <button
+          className="seed-button"
+          key={i}
+          onClick={() => onSelectSeed(seed)}
+        >
           {seed.name}
         </button>
       ))}
@@ -43,10 +63,12 @@ const SeedPlanting: React.FC<SeedPlantingProps> = ({
   imageSrc,
   selectedSeed,
   plantSeed,
+  plantedPlantsData,
 }) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
 
   useEffect(() => {
+    checkGrowth()
     const canvas = canvasRef.current
     if (!canvas) return
 
@@ -57,36 +79,56 @@ const SeedPlanting: React.FC<SeedPlantingProps> = ({
     image.src = imageSrc
 
     image.onload = () => {
-      canvas.width = image.width
-      canvas.height = image.height
+      canvas.width = window.innerWidth
+      canvas.height = window.innerHeight
 
       // Draw the image on the canvas
       ctx.drawImage(image, 0, 0, image.width, image.height)
+      plantedPlantsData.forEach((plantedSeed) => {
+        if (plantedSeed.isMature == false) {
+          const { x, y, imageUrl, radius } = plantedSeed
+          const plantImage = new Image()
+          plantImage.src = 'images/topDownTree3.png'
+
+          plantImage.onload = () => {
+            ctx.drawImage(plantImage, x, y, radius || 60, radius || 60)
+          }
+          return
+        } else {
+          const { x, y, imageUrl, radius } = plantedSeed
+          const plantImage = new Image()
+          plantImage.src = imageUrl
+
+          plantImage.onload = () => {
+            ctx.drawImage(plantImage, x, y, radius || 60, radius || 60)
+          }
+        }
+      })
     }
-  }, [imageSrc])
+  }, [imageSrc, plantedPlantsData])
 
   const handlePlantSeed = (event: React.MouseEvent<HTMLCanvasElement>) => {
     // Get mouse coordinates relative to the canvas
     const canvas = canvasRef.current
     if (!canvas) return
     const rect = canvas.getBoundingClientRect()
-    const x = event.clientX - rect.left
-    const y = event.clientY - rect.top
+    const x = event.nativeEvent.offsetX
+    const y = event.nativeEvent.offsetY
 
     // Plant the selected seed at the coordinates
     if (selectedSeed) {
       const ctx = canvas.getContext('2d')
       if (ctx) {
         const sapling = new Image()
-        sapling.src = saplingImage
+        sapling.src = 'images/topDownTree3.png'
 
         sapling.onload = () => {
           ctx.drawImage(
             sapling,
             x,
             y,
-            selectedSeed.radius || 20,
-            selectedSeed.radius || 20
+            selectedSeed.radius || 60,
+            selectedSeed.radius || 60
           )
         }
       }
@@ -95,18 +137,12 @@ const SeedPlanting: React.FC<SeedPlantingProps> = ({
     }
   }
 
-  return <canvas ref={canvasRef} onClick={handlePlantSeed} />
+  return <canvas className="canvas" ref={canvasRef} onClick={handlePlantSeed} />
 }
 
-// Example usage
-const SeedPlant: React.FC = () => {
-  //Dummy data to be replaced
-  const [seeds, setSeeds] = useState<Seed[]>([
-    { id: 1, name: 'Sunflower', color: 'yellow', radius: 8 },
-    { id: 2, name: 'Rose', color: 'red', radius: 10 },
-    { id: 3, name: 'Lavender', color: 'purple', radius: 15 },
-  ])
-
+const SeedPlant = ({ seeds, imageSource }: Plant[]) => {
+  const [plantStorage, setPlantStorage] = useState([])
+  const [seedsPlantedHere, setSeedsPlantedHere] = useState()
   const [selectedSeed, setSelectedSeed] = useState<Seed | null>(null)
 
   const handleSelectSeed = (seed: Seed) => {
@@ -116,17 +152,80 @@ const SeedPlant: React.FC = () => {
   const handlePlantSeed = (coordinate: { x: number; y: number }) => {
     // Implement logic to plant the selected seed at the specified coordinates
     // For simplicity, this example logs the seed and coordinates
-    console.log('Planting seed:', selectedSeed, 'at coordinates:', coordinate)
+
+    const timestamp = new Date().getTime()
+    console.log(
+      'Planting seed:',
+      selectedSeed,
+      'at coordinates:',
+      coordinate,
+      'time:',
+      timestamp
+    )
+
+    const indextoDelete = seeds.findIndex(
+      (seed: { name: string | undefined }) => {
+        return seed.name === selectedSeed?.name
+      }
+    )
+
+    seeds.splice(indextoDelete, 1)
+
+    const plantedSeed = {
+      ...selectedSeed,
+      ...coordinate,
+      imgSrc: imageSource,
+      timestamp,
+      isMature: false,
+    }
+    setPlantStorage((prevStorage) => [plantedSeed])
+
+    setSelectedSeed(null)
   }
+
+  // Async nature means we have to have console log in useEffect or the data is one step before
+  useEffect(() => {
+    console.log(
+      'Plant storage:',
+      plantStorage,
+      ' This is the imageSource ' + imageSource
+    )
+    async function addingPlants() {
+      await addToStorage(plantStorage)
+    }
+    addingPlants()
+  }, [imageSource, plantStorage])
+
+  // Rendering planted plants when you return to area
+
+  async function getPlantsFromRoute(region: { imageSource: any }) {
+    const strSplit = region.imageSource.split('/')
+
+    const seedsPlanted = await getPlantsByRegion(strSplit[1])
+    setSeedsPlantedHere(seedsPlanted)
+  }
+
+  useEffect(() => {
+    async function fetchData() {
+      const region = { imageSource }
+      await getPlantsFromRoute(region)
+    }
+
+    fetchData()
+  }, [imageSource])
 
   return (
     <div>
-      <Header />
-      <SeedInventory seeds={seeds} onSelectSeed={handleSelectSeed} />
+      <SeedInventory
+        seeds={seeds}
+        onSelectSeed={handleSelectSeed}
+        zoneImage={imageSource}
+      />
       <SeedPlanting
-        imageSrc="images/New Zealand Sliced/01_central.jpg"
+        imageSrc={imageSource}
         selectedSeed={selectedSeed}
         plantSeed={handlePlantSeed}
+        plantedPlantsData={seedsPlantedHere}
       />
     </div>
   )
